@@ -178,6 +178,12 @@
     <Filter Include="sdk\interfaces\IGlobals">
       <UniqueIdentifier>{1ad292de-7939-4092-b62e-d44317277a14}</UniqueIdentifier>
     </Filter>
+    <Filter Include="dxsdk">
+      <UniqueIdentifier>{a9ef7a89-254b-4b54-89f5-7e5d0748cbdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dxsdk\lib">
+      <UniqueIdentifier>{e6f69e44-e37e-4ca7-866a-28984753d871}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils.h">
@@ -317,5 +323,88 @@
     <ClInclude Include="IGlobals.h">
       <Filter>sdk\interfaces\IGlobals</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="dxsdk\Lib\x86\XInput.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\d2d1.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\d3d9.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\d3d10.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\d3d10_1.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\d3d11.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\d3dcompiler.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\D3DCSX.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\D3DCSXd.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\d3dx9.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\d3dx9d.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\d3dx10.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\d3dx10d.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\d3dx11.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\d3dx11d.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\d3dxof.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\dinput8.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\dsetup.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\dsound.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\dwrite.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\DxErr.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\dxgi.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\dxguid.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\X3DAudio.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\xapobase.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\xapobased.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
+    <Library Include="dxsdk\Lib\x86\XAPOFX.lib">
+      <Filter>dxsdk\lib</Filter>
+    </Library>
   </ItemGroup>
 </Project>

@@ -225,6 +225,35 @@
     <ClInclude Include="sdk.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="dxsdk\Lib\x86\d2d1.lib" />
+    <Library Include="dxsdk\Lib\x86\d3d10.lib" />
+    <Library Include="dxsdk\Lib\x86\d3d10_1.lib" />
+    <Library Include="dxsdk\Lib\x86\d3d11.lib" />
+    <Library Include="dxsdk\Lib\x86\d3d9.lib" />
+    <Library Include="dxsdk\Lib\x86\d3dcompiler.lib" />
+    <Library Include="dxsdk\Lib\x86\D3DCSX.lib" />
+    <Library Include="dxsdk\Lib\x86\D3DCSXd.lib" />
+    <Library Include="dxsdk\Lib\x86\d3dx10.lib" />
+    <Library Include="dxsdk\Lib\x86\d3dx10d.lib" />
+    <Library Include="dxsdk\Lib\x86\d3dx11.lib" />
+    <Library Include="dxsdk\Lib\x86\d3dx11d.lib" />
+    <Library Include="dxsdk\Lib\x86\d3dx9.lib" />
+    <Library Include="dxsdk\Lib\x86\d3dx9d.lib" />
+    <Library Include="dxsdk\Lib\x86\d3dxof.lib" />
+    <Library Include="dxsdk\Lib\x86\dinput8.lib" />
+    <Library Include="dxsdk\Lib\x86\dsetup.lib" />
+    <Library Include="dxsdk\Lib\x86\dsound.lib" />
+    <Library Include="dxsdk\Lib\x86\dwrite.lib" />
+    <Library Include="dxsdk\Lib\x86\DxErr.lib" />
+    <Library Include="dxsdk\Lib\x86\dxgi.lib" />
+    <Library Include="dxsdk\Lib\x86\dxguid.lib" />
+    <Library Include="dxsdk\Lib\x86\X3DAudio.lib" />
+    <Library Include="dxsdk\Lib\x86\xapobase.lib" />
+    <Library Include="dxsdk\Lib\x86\xapobased.lib" />
+    <Library Include="dxsdk\Lib\x86\XAPOFX.lib" />
+    <Library Include="dxsdk\Lib\x86\XInput.lib" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
 </Project>
