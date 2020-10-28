@@ -1,0 +1,30 @@
+#pragma once
+#include "includes.h"
+#include "sdk.h"
+
+namespace g // muh gamerfood nostalgia
+{
+	extern DWORD dwClientModule;
+	extern CBasePlayer* pentLocalPlayer;
+	extern LPDIRECT3DDEVICE9 pDevice;
+	extern LPD3DXFONT font;
+	extern bool menuOpen;
+	extern Vector2 mousePosition;
+	extern Vector realAngles;
+}
+namespace interfaces
+{
+	extern IClientEntityList* pacClientEntityList;
+	extern ICvar* pacCvar;
+	extern IEngineClient* pacEngineClient;
+	extern IBaseClientDll* pacClient;
+	extern IClientMode* pacClientMode;
+	extern IEngineTrace* pacEngineTrace;
+	extern IInput* pacInput;
+	extern IVModelInfoClient* pacModelInfoClient;
+	extern IVModelRender* pacModelRender;
+	extern IMaterialSystem* pacMaterialSystem;
+	extern IPanel* pacPanel;
+	extern ISurface* pacSurface;
+	extern IGlobals* pacGlobals;
+}
