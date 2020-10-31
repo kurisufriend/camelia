@@ -43,6 +43,19 @@ void menu::drawButton(std::string label, int x1, int& y1, void(*callback)(), D3D
 
 void menu::drawMutex(std::string label, int x1, int& y1, int& tracker, std::vector<std::string> options, D3DCOLOR color)
 {
+	int maxSize = -1;
+	std::string maxString;
+	for (int i = 0; i < options.size(); i++)
+	{
+		std::string curOption = options.at(i);
+		//int curSize = drawing::getTextWidth(curOption.c_str(), g::font);
+		int curSize = curOption.length();
+		if (curSize > maxSize)
+		{
+			maxSize = curSize;
+			maxString = curOption;
+		}
+	}
 	D3DCOLOR oldColor = color;
 	y1 += 25 + info::paddingValue;
 	for (int i = 0; i < options.size(); i++)
@@ -50,7 +63,7 @@ void menu::drawMutex(std::string label, int x1, int& y1, int& tracker, std::vect
 		color = oldColor;
 		y1 += 17;
 		std::string option = options.at(i);
-		int x2 = x1 + drawing::getTextWidth(option.c_str(), g::font);
+		int x2 = x1 + drawing::getTextWidth(maxString.c_str(), g::font);
 		int y2 = y1 + 17;
 		bool isHovered = isMouseInRect(x1, y1, x2, y2);
 		bool isPressed = (isHovered && (GetAsyncKeyState(VK_LBUTTON) & 0x8000));
