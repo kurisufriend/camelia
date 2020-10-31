@@ -2,6 +2,8 @@
 #include "globals.h"
 #include "includes.h"
 #include "hooks.h"
+#include "offsets.h"
+#include "netvar.h"
 
 #define INRANGE(x,a,b)    (x >= a && x <= b)
 #define getBits( x )    (INRANGE((x&(~0x20)),'A','F') ? ((x&(~0x20)) - 'A' + 0xa) : (INRANGE(x,'0','9') ? x - '0' : 0))
@@ -22,6 +24,11 @@ bool utils::setup()
 	if (!hooks::setupHooks())
 	{
 		std::cout << "failed in hooks" << std::endl;
+		return false;
+	}
+	if (!utils::setupNetvars())
+	{
+		std::cout << "failed in netvars" << std::endl;
 		return false;
 	}
 	std::cout << "leaving setup" << std::endl;
@@ -97,7 +104,95 @@ bool utils::setupInterfaces() // doing this here but hooks elsewhere triggers my
 	std::cout << "leaving interfaces" << std::endl;
 	return true;
 }
-
+bool utils::setupNetvars() // there is literally no way i add checks for this without some fancy define stuff
+{
+	hazedumper::netvars::m_ArmorValue = netvar::getNetvar("DT_CSPlayer", "m_ArmorValue");
+	hazedumper::netvars::m_Collision = netvar::getNetvar("DT_BasePlayer", "m_Collision");
+	hazedumper::netvars::m_CollisionGroup = netvar::getNetvar("DT_CSPlayer", "m_CollisionGroup");
+	hazedumper::netvars::m_Local = netvar::getNetvar("DT_BasePlayer", "m_Local");
+	hazedumper::netvars::m_MoveType = netvar::getNetvar("DT_CSPlayer", "m_MoveType");
+	hazedumper::netvars::m_OriginalOwnerXuidHigh = netvar::getNetvar("DT_BaseAttributableItem", "m_OriginalOwnerXuidHigh");
+	hazedumper::netvars::m_OriginalOwnerXuidLow = netvar::getNetvar("DT_BaseAttributableItem", "m_OriginalOwnerXuidLow");
+	hazedumper::netvars::m_aimPunchAngle = netvar::getNetvar("DT_BasePlayer", "m_aimPunchAngle");
+	hazedumper::netvars::m_aimPunchAngleVel = netvar::getNetvar("DT_BasePlayer", "m_aimPunchAngleVel");
+	hazedumper::netvars::m_bGunGameImmunity = netvar::getNetvar("DT_CSPlayer", "m_bGunGameImmunity");
+	hazedumper::netvars::m_bHasDefuser = netvar::getNetvar("DT_CSPlayer", "m_bHasDefuser");
+	hazedumper::netvars::m_bHasHelmet = netvar::getNetvar("DT_CSPlayer", "m_bHasHelmet");
+	hazedumper::netvars::m_bIsDefusing = netvar::getNetvar("DT_CSPlayer", "m_bIsDefusing");
+	hazedumper::netvars::m_bIsScoped = netvar::getNetvar("DT_CSPlayer", "m_bIsScoped");
+	hazedumper::netvars::m_bSpotted = netvar::getNetvar("DT_BaseEntity", "m_bSpotted");
+	hazedumper::netvars::m_bSpottedByMask = netvar::getNetvar("DT_BaseEntity", "m_bSpottedByMask");
+	hazedumper::netvars::m_fAccuracyPenalty = netvar::getNetvar("DT_WeaponCSBase", "m_fAccuracyPenalty");
+	hazedumper::netvars::m_fFlags = netvar::getNetvar("DT_CSPlayer", "m_fFlags");
+	hazedumper::netvars::m_flFallbackWear = netvar::getNetvar("DT_BaseAttributableItem", "m_flFallbackWear");
+	hazedumper::netvars::m_flFlashDuration = netvar::getNetvar("DT_CSPlayer", "m_flFlashDuration");
+	hazedumper::netvars::m_flFlashMaxAlpha = netvar::getNetvar("DT_CSPlayer", "m_flFlashMaxAlpha");
+	hazedumper::netvars::m_flNextPrimaryAttack = netvar::getNetvar("DT_BaseCombatWeapon", "m_flNextPrimaryAttack");
+	hazedumper::netvars::m_hActiveWeapon = netvar::getNetvar("DT_BasePlayer", "m_hActiveWeapon");
+	hazedumper::netvars::m_hObserverTarget = netvar::getNetvar("DT_BasePlayer", "m_hObserverTarget");
+	hazedumper::netvars::m_hOwner = netvar::getNetvar("DT_PredictedViewModel", "m_hOwner");
+	hazedumper::netvars::m_hOwnerEntity = netvar::getNetvar("DT_CSPlayer", "m_hOwnerEntity");
+	hazedumper::netvars::m_iAccountID = netvar::getNetvar("DT_BaseAttributableItem", "m_iAccountID");
+	hazedumper::netvars::m_iClip1 = netvar::getNetvar("DT_BaseCombatWeapon", "m_iClip1");
+	hazedumper::netvars::m_iCompetitiveRanking = netvar::getNetvar("DT_CSPlayerResource", "m_iCompetitiveRanking");
+	hazedumper::netvars::m_iCompetitiveWins = netvar::getNetvar("DT_CSPlayerResource", "m_iCompetitiveWins");
+	hazedumper::netvars::m_iEntityQuality = netvar::getNetvar("DT_BaseAttributableItem", "m_iEntityQuality");
+	hazedumper::netvars::m_iFOVStart = netvar::getNetvar("DT_CSPlayer", "m_iFOVStart");
+	hazedumper::netvars::m_iFOV = netvar::getNetvar("DT_CSPlayer", "m_iFOV");
+	hazedumper::netvars::m_iHealth = netvar::getNetvar("DT_BasePlayer", "m_iHealth");
+	hazedumper::netvars::m_iItemIDHigh = netvar::getNetvar("DT_BaseAttributableItem", "m_iItemIDHigh");
+	hazedumper::netvars::m_iObserverMode = netvar::getNetvar("DT_BasePlayer", "m_iObserverMode");
+	hazedumper::netvars::m_iShotsFired = netvar::getNetvar("DT_CSPlayer", "m_iShotsFired");
+	hazedumper::netvars::m_iState = netvar::getNetvar("DT_BaseCombatWeapon", "m_iState");
+	hazedumper::netvars::m_iTeamNum = netvar::getNetvar("DT_BasePlayer", "m_iTeamNum");
+	hazedumper::netvars::m_lifeState = netvar::getNetvar("DT_CSPlayer", "m_lifeState");
+	hazedumper::netvars::m_nFallbackPaintKit = netvar::getNetvar("DT_BaseAttributableItem", "m_nFallbackPaintKit");
+	hazedumper::netvars::m_nFallbackSeed = netvar::getNetvar("DT_BaseAttributableItem", "m_nFallbackSeed");
+	hazedumper::netvars::m_nFallbackStatTrak = netvar::getNetvar("DT_BaseAttributableItem", "m_nFallbackStatTrak");
+	hazedumper::netvars::m_nForceBone = netvar::getNetvar("DT_BaseAnimating", "m_nForceBone");
+	hazedumper::netvars::m_nTickBase = netvar::getNetvar("DT_BasePlayer", "m_nTickBase");
+	hazedumper::netvars::m_szCustomName = netvar::getNetvar("DT_BaseAttributableItem", "m_szCustomName");
+	hazedumper::netvars::m_szLastPlaceName = netvar::getNetvar("DT_CSPlayer", "m_szLastPlaceName");
+	hazedumper::netvars::m_vecOrigin = netvar::getNetvar("DT_BasePlayer", "m_vecOrigin");
+	hazedumper::netvars::m_vecVelocity = netvar::getNetvar("DT_CSPlayer", "m_vecVelocity[0]");
+	hazedumper::netvars::m_vecViewOffset = netvar::getNetvar("DT_CSPlayer", "m_vecViewOffset[0]");
+	hazedumper::netvars::m_viewPunchAngle = netvar::getNetvar("DT_BasePlayer", "m_viewPunchAngle");
+	hazedumper::netvars::deadflag = netvar::getNetvar("DT_CSPlayer", "deadflag");
+	hazedumper::netvars::m_clrRender = netvar::getNetvar("DT_BaseEntity", "m_clrRender");
+	hazedumper::netvars::m_flC4Blow = netvar::getNetvar("DT_PlantedC4", "m_flC4Blow");
+	hazedumper::netvars::m_flTimerLength = netvar::getNetvar("DT_PlantedC4", "m_flTimerLength");
+	hazedumper::netvars::m_flDefuseLength = netvar::getNetvar("DT_PlantedC4", "m_flDefuseLength");
+	hazedumper::netvars::m_flDefuseCountDown = netvar::getNetvar("DT_PlantedC4", "m_flDefuseCountDown");
+	hazedumper::netvars::cs_gamerules_data = netvar::getNetvar("DT_CSGameRulesProxy", "cs_gamerules_data");
+	hazedumper::netvars::m_SurvivalRules = netvar::getNetvar("DT_CSGameRulesProxy", "m_SurvivalRules");
+	hazedumper::netvars::m_SurvivalGameRuleDecisionTypes = netvar::getNetvar("DT_CSGameRulesProxy", "m_SurvivalGameRuleDecisionTypes");
+	hazedumper::netvars::m_bIsValveDS = netvar::getNetvar("DT_CSGameRulesProxy", "m_bIsValveDS");
+	hazedumper::netvars::m_bFreezePeriod = netvar::getNetvar("DT_CSGameRulesProxy", "m_bFreezePeriod");
+	hazedumper::netvars::m_bBombPlanted = netvar::getNetvar("DT_CSGameRulesProxy", "m_bBombPlanted");
+	hazedumper::netvars::m_bIsQueuedMatchmaking = netvar::getNetvar("DT_CSGameRulesProxy", "m_bIsQueuedMatchmaking");
+	hazedumper::netvars::m_flSimulationTime = netvar::getNetvar("DT_CSPlayer", "m_flSimulationTime");
+	hazedumper::netvars::m_flLowerBodyYawTarget = netvar::getNetvar("DT_CSPlayer", "m_flLowerBodyYawTarget");
+	hazedumper::netvars::m_angEyeAnglesX = netvar::getNetvar("DT_CSPlayer", "m_angEyeAngles[0]");
+	hazedumper::netvars::m_angEyeAnglesY = netvar::getNetvar("DT_CSPlayer", "m_angEyeAngles[1]");
+	hazedumper::netvars::m_flNextAttack = netvar::getNetvar("DT_CSPlayer", "m_flNextAttack");
+	hazedumper::netvars::m_bStartedArming = netvar::getNetvar("DT_WeaponC4", "m_bStartedArming");
+	hazedumper::netvars::m_bUseCustomBloomScale = netvar::getNetvar("DT_EnvTonemapController", "m_bUseCustomBloomScale");
+	hazedumper::netvars::m_bUseCustomAutoExposureMin = netvar::getNetvar("DT_EnvTonemapController", "m_bUseCustomAutoExposureMin");
+	hazedumper::netvars::m_bUseCustomAutoExposureMax = netvar::getNetvar("DT_EnvTonemapController", "m_bUseCustomAutoExposureMax");
+	hazedumper::netvars::m_flCustomBloomScale = netvar::getNetvar("DT_EnvTonemapController", "m_flCustomBloomScale");
+	hazedumper::netvars::m_flCustomAutoExposureMin = netvar::getNetvar("DT_EnvTonemapController", "m_flCustomAutoExposureMin");
+	hazedumper::netvars::m_flCustomAutoExposureMax = netvar::getNetvar("DT_EnvTonemapController", "m_flCustomAutoExposureMax");
+	hazedumper::netvars::m_iItemDefinitionIndex = netvar::getNetvar("DT_BaseCombatWeapon", "m_iItemDefinitionIndex");
+	hazedumper::netvars::m_iGlowIndex = netvar::getNetvar("DT_CSPlayer", "m_flFlashDuration") + 24;
+	hazedumper::netvars::m_iCrosshairId = netvar::getNetvar("DT_CSPlayer", "m_bHasDefuser") + 92;
+	hazedumper::netvars::m_bInReload = netvar::getNetvar("DT_BaseCombatWeapon", "m_flNextPrimaryAttack") + 109;
+	hazedumper::netvars::m_dwBoneMatrix = netvar::getNetvar("DT_BaseAnimating", "m_nForceBone") + 28;
+	hazedumper::netvars::m_nModelIndex = netvar::getNetvar("DT_BaseViewModel", "m_nModelIndex");
+	hazedumper::netvars::m_iViewModelIndex = netvar::getNetvar("DT_WeaponCSBase", "m_iViewModelIndex");
+	hazedumper::netvars::m_hViewModel = netvar::getNetvar("DT_CSPlayer", "m_hViewModel[0]");
+	std::cout << "got netvars" << std::endl;
+	return true;
+}
 // A5hack, takes ida style pattern. probably should change so it takes base addy instead of calcing modules every call
 DWORD utils::findPattern(std::string moduleName, std::string pattern)
 {

@@ -1,11 +1,11 @@
 #pragma once
 
 #include <Windows.h>
-#include <d3d9.h>
-#include <d3dx9.h>
+#include "dxsdk/Include/d3d9.h"
+#include "dxsdk/Include/d3dx9.h"
 
-#pragma comment(lib, "d3d9.lib")
-#pragma comment(lib, "d3dx9.lib")
+#pragma comment(lib, "dxsdk/Lib/x86/d3d9.lib")
+#pragma comment(lib, "dxsdk/Lib/x86/d3dx9.lib")
 
 #include <Psapi.h>
 #include <lmcons.h>

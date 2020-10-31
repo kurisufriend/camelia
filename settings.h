@@ -17,6 +17,9 @@ namespace settings
 	extern int iNightmodeLevel;
 	extern bool bGrenadePrediction;
 
+	extern bool bKnifechanger;
+	extern int iKnife;
+
 	extern bool bAntiAim;
 	extern int iAAX;
 	extern int iAAY;

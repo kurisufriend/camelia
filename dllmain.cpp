@@ -16,6 +16,7 @@
 #include "modules.h"
 #include "utils.h"
 #include "hooks.h"
+#include "netvar.h"
 BOOL WINAPI initCamelia(HMODULE threadHandle)
 {
     AllocConsole();

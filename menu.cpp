@@ -41,6 +41,33 @@ void menu::drawButton(std::string label, int x1, int& y1, void(*callback)(), D3D
 	drawing::drawText(g::font, x1, y1, D3DCOLOR_ARGB(255, 255, 255, 255), label.c_str());
 }
 
+void menu::drawMutex(std::string label, int x1, int& y1, int& tracker, std::vector<std::string> options, D3DCOLOR color)
+{
+	D3DCOLOR oldColor = color;
+	y1 += 25 + info::paddingValue;
+	for (int i = 0; i < options.size(); i++)
+	{
+		color = oldColor;
+		y1 += 17;
+		std::string option = options.at(i);
+		int x2 = x1 + drawing::getTextWidth(option.c_str(), g::font);
+		int y2 = y1 + 17;
+		bool isHovered = isMouseInRect(x1, y1, x2, y2);
+		bool isPressed = (isHovered && (GetAsyncKeyState(VK_LBUTTON) & 0x8000));
+		if (isHovered)
+			color = D3DCOLOR_ARGB(255, 120, 120, 120);
+		D3DCOLOR textColor = D3DCOLOR_ARGB(255, 255, 255, 255);
+		if (isPressed || i == tracker)
+		{
+			color = D3DCOLOR_ARGB(255, 210, 210, 0);
+			textColor = D3DCOLOR_ARGB(255, 0, 0, 0);
+			tracker = i;
+		}
+		drawing::drawFilledRect2(x1, y1, x2, y2, color);
+		drawing::drawText(g::font, x1, y1, textColor, option.c_str());
+	}
+}
+
 void menu::drawToggle(std::string label, int x1, int& y1, bool& tracker, D3DCOLOR color)
 {
 	y1 += 25 + info::paddingValue;
@@ -170,6 +197,7 @@ void menu::render()
 		drawTab("self", xPos, windowBottom - 34, info::currentVisualsTab, 1);
 		drawTab("enemies", xPos, windowBottom - 34, info::currentVisualsTab, 2);
 		drawTab("world", xPos, windowBottom - 34, info::currentVisualsTab, 3);
+		drawTab("swag", xPos, windowBottom - 34, info::currentVisualsTab, 4);
 		if (info::currentVisualsTab == 1) // self
 		{
 			int yPos = windowTop + 25; // big brain genius auto padding i should win an award
@@ -203,6 +231,12 @@ void menu::render()
 			drawSlider("nightmode amount", windowLeft + info::paddingValue, yPos, settings::iNightmodeLevel, 0, 11, D3DCOLOR_ARGB(255, 25, 25, 25));
 			drawSeparator(yPos);
 			drawToggle("grenade prediction", windowLeft + info::paddingValue, yPos, settings::bGrenadePrediction, D3DCOLOR_ARGB(255, 25, 25, 25));
+		}
+		else if (info::currentVisualsTab == 4) // swag
+		{
+			int yPos = windowTop + 25; // big brain genius auto padding i should win an award
+			drawToggle("knifechanger", windowLeft + info::paddingValue, yPos, settings::bKnifechanger, D3DCOLOR_ARGB(255, 25, 25, 25));
+			drawMutex("lol", windowLeft + info::paddingValue, yPos, settings::iKnife, knifechangerOptions, D3DCOLOR_ARGB(255, 25, 25, 25));
 		}
 	}	
 	else if (info::currentTab == 4) // movement

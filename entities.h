@@ -62,6 +62,11 @@ public:
         using original_fn = int(__thiscall*)(void*, int, uint8_t);
         return (*(original_fn**)animating())[9](animating(), flags, alpha);
     }
+    void setModelIndexVFunc(int value)
+    {
+        using fn = void(__thiscall*)(CBaseEntity*, int);
+        return (*(fn**)this)[75](this, value);
+    }
     int getFlags()
     {
         return *(int*)((DWORD)this + hazedumper::netvars::m_fFlags);
@@ -98,8 +103,58 @@ public:
     {
         return *(int*)((DWORD)this + hazedumper::signatures::m_bDormant);
     }
+    DWORD getViewmodel()
+    {
+        return *(DWORD*)((DWORD)this + hazedumper::netvars::m_hViewModel);
+    }
+    int getModelIndex()
+    {
+        return *(int*)((DWORD)this + hazedumper::netvars::m_nModelIndex);
+    }
+    void setModelIndex(int value)
+    {
+        *(int*)((DWORD)this + hazedumper::netvars::m_nModelIndex) = value;
+    }
 };
-
+static std::vector<std::string> knifechangerOptions =
+{
+    "bayonet",
+    "classic",
+    "flip",
+    "gut",
+    "karambit",
+    "m9 bayonet",
+    "huntsman",
+    "falchion",
+    "bowie",
+    "butterfly",
+    "shadow daggers",
+    "paracord",
+    "survival",
+    "ursus",
+    "navaja",
+    "nomad",
+    "stiletto",
+    "talon",
+    "skeleton"
+};
+static std::vector<int> knifeDefinitionIndices =
+{
+    503,
+    505,
+    506,
+    507,
+    508,
+    509,
+    512,
+    514,
+    515,
+    516,
+    519,
+    520,
+    522,
+    523,
+};
 enum itemDefinition : int
 {
     WEAPON_NONE = 0,
@@ -219,13 +274,29 @@ public:
     {
         return *(short*)((DWORD)this + hazedumper::netvars::m_iItemDefinitionIndex);
     }
+    void setItemDefinitionIndex(short value)
+    {
+        *(short*)((DWORD)this + hazedumper::netvars::m_iItemDefinitionIndex) = value;
+    }
     int getEntityQuality()
     {
         return *(int*)((DWORD)this + hazedumper::netvars::m_iEntityQuality);
     }
+    void setEntityQuality(int value)
+    {
+        *(int*)((DWORD)this + hazedumper::netvars::m_iEntityQuality) = value;
+    }
+    int getViewModelIndex()
+    {
+        return *(int*)((DWORD)this + hazedumper::netvars::m_iViewModelIndex);
+    }
     bool getInReload()
     {
         return *(bool*)((DWORD)this + hazedumper::netvars::m_bInReload);
+    }
+    int setItemIdHigh(int value)
+    {
+        return *(int*)((DWORD)this + hazedumper::netvars::m_iItemIDHigh);
     }
 };
 

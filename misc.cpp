@@ -67,14 +67,15 @@ void modules::recoilCrosshair()
 }
 void modules::grenadePrediction()
 {
-	static ConVar* svGrenadeTrajectory = interfaces::pacCvar->FindVar("sv_grenade_trajectory");
+	static ConVar* clGrenadePreview = interfaces::pacCvar->FindVar("cl_grenadepreview");
 	static bool init = false;
 	if (!init)
 	{
-		svGrenadeTrajectory->callbacks.size = 0;
-		svGrenadeTrajectory->flags &= FCVAR_CHEAT;
+		clGrenadePreview->callbacks.size = 0;
+		clGrenadePreview->flags &= FCVAR_REPLICATED;
+		clGrenadePreview->flags &= FCVAR_CHEAT;
 	}
-	svGrenadeTrajectory->setValue(settings::bGrenadePrediction);
+	clGrenadePreview->setValue(settings::bGrenadePrediction);
 }
 void modules::slowWalk(CUserCmd* cmd)
 {

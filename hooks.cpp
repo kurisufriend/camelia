@@ -103,16 +103,22 @@ void __stdcall hkFrameStageNotify(clientFrameStage frameStage)
 	{
 		modules::glowESP(); // glow on renderend should eliminate flicker in theory
 	}
-	if (frameStage == FRAME_RENDER_START)
+	else if (frameStage == FRAME_NET_UPDATE_POSTDATAUPDATE_START)
+	{
+		modules::knifechanger();
+	}
+	else if (frameStage == FRAME_RENDER_START)
 	{
 		if (g::pentLocalPlayer && settings::bAngleFix && interfaces::pacInput->cameraInThirdPerson)
 		{
 			g::pentLocalPlayer->setLocalVAngles(g::realAngles); //not an animfix so you can spot the change in anim from firstperson
 		}// also yknow not an animfix doesnt accurately represent server side angles its just meant for seeing your aa
+		modules::knifechanger();
 		modules::thirdperson();
 		modules::nightmode();
 		modules::forceCrosshair();
 		modules::recoilCrosshair();
+		modules::grenadePrediction();
 	}
 	oFrameStageNotify(interfaces::pacClient, frameStage);
 }

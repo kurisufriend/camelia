@@ -5,3 +5,4 @@
 #include "triggerbot.h"
 #include "antiaim.h"
 #include "aimbot.h"
+#include "knifechanger.h"

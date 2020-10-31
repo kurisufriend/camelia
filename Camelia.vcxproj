@@ -171,6 +171,7 @@
     <ClCompile Include="globals.cpp" />
     <ClCompile Include="glowESP.cpp" />
     <ClCompile Include="hooks.cpp" />
+    <ClCompile Include="knifechanger.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="minhook\buffer.c" />
     <ClCompile Include="minhook\hde\hde32.c" />
@@ -178,6 +179,8 @@
     <ClCompile Include="minhook\hook.c" />
     <ClCompile Include="minhook\trampoline.c" />
     <ClCompile Include="misc.cpp" />
+    <ClCompile Include="netvar.cpp" />
+    <ClCompile Include="offsets.cpp" />
     <ClCompile Include="settings.cpp" />
     <ClCompile Include="triggerbot.cpp" />
     <ClCompile Include="utils.cpp" />
@@ -197,6 +200,7 @@
     <ClInclude Include="ISurface.h" />
     <ClInclude Include="IVModelInfo.h" />
     <ClInclude Include="IVModelRender.h" />
+    <ClInclude Include="knifechanger.h" />
     <ClInclude Include="matrix.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="minhook\buffer.h" />
@@ -208,6 +212,7 @@
     <ClInclude Include="minhook\MinHook.h" />
     <ClInclude Include="minhook\trampoline.h" />
     <ClInclude Include="miscshit.h" />
+    <ClInclude Include="netvar.h" />
     <ClInclude Include="settings.h" />
     <ClInclude Include="triggerbot.h" />
     <ClInclude Include="Vector.h" />

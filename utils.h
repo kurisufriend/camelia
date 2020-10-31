@@ -6,6 +6,7 @@ namespace utils
 	bool setup();
 	void* getInterface(const char* dllname, const char* interfacename);
 	bool setupInterfaces();
+	bool setupNetvars();
 	DWORD findPattern(std::string module, std::string pattern);
 	void correctMovement(Vector oldAngles, CUserCmd* cmd, float old_forwardmove, float old_sidemove);
 	bool worldToScreen(Vector pos, Vector2& screen, float matrix[16], int windowWidth, int windowHeight);

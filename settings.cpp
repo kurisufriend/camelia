@@ -16,6 +16,9 @@ bool settings::bRemoveScopeOverlay = false;
 int settings::iNightmodeLevel = 0;
 bool settings::bGrenadePrediction = false;
 
+bool settings::bKnifechanger = false;
+int settings::iKnife = false;
+
 bool settings::bAntiAim = false;
 int settings::iAAX = 0;
 int settings::iAAY = 0; // lol // nvm used to be flAAY

@@ -53,6 +53,15 @@
     <ClCompile Include="aimbot.cpp">
       <Filter>modules\aimbot</Filter>
     </ClCompile>
+    <ClCompile Include="netvar.cpp">
+      <Filter>netvar</Filter>
+    </ClCompile>
+    <ClCompile Include="offsets.cpp">
+      <Filter>offsets</Filter>
+    </ClCompile>
+    <ClCompile Include="knifechanger.cpp">
+      <Filter>modules\visuals\skinchanger</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="sdk">
@@ -184,13 +193,21 @@
     <Filter Include="dxsdk\lib">
       <UniqueIdentifier>{e6f69e44-e37e-4ca7-866a-28984753d871}</UniqueIdentifier>
     </Filter>
+    <Filter Include="netvar">
+      <UniqueIdentifier>{3636788f-ffb3-4972-a46e-c4a4771b62a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="offsets">
+      <UniqueIdentifier>{ced40dc1-b624-4236-bf40-0bb68c660e5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="modules\visuals\skinchanger">
+      <UniqueIdentifier>{741aa149-171d-4039-850b-ae9ef9308507}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils.h">
       <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="includes.h" />
-    <ClInclude Include="offsets.h" />
     <ClInclude Include="misc.h">
       <Filter>modules\misc</Filter>
     </ClInclude>
@@ -322,6 +339,15 @@
     </ClInclude>
     <ClInclude Include="IGlobals.h">
       <Filter>sdk\interfaces\IGlobals</Filter>
+    </ClInclude>
+    <ClInclude Include="netvar.h">
+      <Filter>netvar</Filter>
+    </ClInclude>
+    <ClInclude Include="offsets.h">
+      <Filter>offsets</Filter>
+    </ClInclude>
+    <ClInclude Include="knifechanger.h">
+      <Filter>modules\visuals\skinchanger</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
