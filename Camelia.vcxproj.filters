@@ -175,9 +175,6 @@
     <Filter Include="sdk\classes\matrix">
       <UniqueIdentifier>{6ce5ab8c-a65f-4ba2-b4ab-85394766c55b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="modules\knifechanger">
-      <UniqueIdentifier>{7a1ff4a3-7101-48bf-9cc1-162c3fae7407}</UniqueIdentifier>
-    </Filter>
     <Filter Include="sdk\interfaces\IPanel">
       <UniqueIdentifier>{c48108fc-5558-4e15-a6c1-eba56cd9307d}</UniqueIdentifier>
     </Filter>
