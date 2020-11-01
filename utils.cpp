@@ -348,3 +348,9 @@ bool utils::canShoot()
 		return false;
 	return true;
 }
+void utils::setClanTag(const char* tag)
+{
+	static auto pSetClanTag = (int(__fastcall*)(const char*, const char*))findPattern("engine.dll", "53 56 57 8B DA 8B F9 FF 15");
+
+	pSetClanTag(tag, tag);
+}

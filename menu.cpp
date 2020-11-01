@@ -58,6 +58,7 @@ void menu::drawMutex(std::string label, int x1, int& y1, int& tracker, std::vect
 	}
 	D3DCOLOR oldColor = color;
 	y1 += 25 + info::paddingValue;
+	drawing::drawText(g::font, x1, y1, D3DCOLOR_ARGB(255, 255, 255, 255), label.c_str());
 	for (int i = 0; i < options.size(); i++)
 	{
 		color = oldColor;
@@ -249,7 +250,7 @@ void menu::render()
 		{
 			int yPos = windowTop + 25; // big brain genius auto padding i should win an award
 			drawToggle("knifechanger", windowLeft + info::paddingValue, yPos, settings::bKnifechanger, D3DCOLOR_ARGB(255, 25, 25, 25));
-			drawMutex("lol", windowLeft + info::paddingValue, yPos, settings::iKnife, knifechangerOptions, D3DCOLOR_ARGB(255, 25, 25, 25));
+			drawMutex("knife", windowLeft + info::paddingValue, yPos, settings::iKnife, knifechangerOptions, D3DCOLOR_ARGB(255, 25, 25, 25));
 		}
 	}	
 	else if (info::currentTab == 4) // movement
@@ -263,6 +264,8 @@ void menu::render()
 	else if (info::currentTab == 5) // misc
 	{
 		int yPos = windowTop + 25; // big brain genius auto padding i should win an award
+		drawToggle("clantag changer", windowLeft + info::paddingValue, yPos, settings::bClantagChanger, D3DCOLOR_ARGB(255, 25, 25, 25));
+		drawMutex("clantag", windowLeft + info::paddingValue, yPos, settings::iClantag, clantags, D3DCOLOR_ARGB(255, 25, 25, 25));
 	}
 	else
 	{

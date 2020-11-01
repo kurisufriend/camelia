@@ -10,4 +10,5 @@ namespace modules
 	void recoilCrosshair();
 	void grenadePrediction();
 	void slowWalk(CUserCmd* cmd);
+	void clantagChanger(CUserCmd* cmd);
 }

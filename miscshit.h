@@ -73,3 +73,12 @@ public:
     ClientClass* m_pNext;
     int                m_ClassID;
 };
+
+static std::vector<std::string> clantags =
+{
+    "gameshark",
+    "getprime",
+    "kurisu a cute",
+    "sand reckoner",
+    "camelia"
+};

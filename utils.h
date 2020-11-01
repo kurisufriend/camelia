@@ -16,4 +16,5 @@ namespace utils
 	bool didHitNonWorldEntity(CBaseEntity* ent);
 	float getServerTime();
 	bool canShoot();
+	void setClanTag(const char* tag);
 }

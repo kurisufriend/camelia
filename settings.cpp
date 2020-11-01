@@ -44,3 +44,6 @@ int settings::iSlowWalkAmount;
 
 bool settings::bAngleFix = false;
 bool settings::bThirdPerson = false;
+
+bool settings::bClantagChanger;
+int settings::iClantag;

@@ -88,3 +88,15 @@ void modules::slowWalk(CUserCmd* cmd)
 	cmd->forwardmove = std::clamp(cmd->forwardmove, (float)-settings::iSlowWalkAmount, (float)settings::iSlowWalkAmount);
 	cmd->sidemove = std::clamp(cmd->sidemove, (float)-settings::iSlowWalkAmount, (float)settings::iSlowWalkAmount);
 }
+void modules::clantagChanger(CUserCmd* cmd)
+{
+	if (!g::pentLocalPlayer)
+		return;
+	if (!settings::bClantagChanger)
+	{
+		utils::setClanTag("");
+		return;
+	}
+	std::cout << (clantags.at(settings::iClantag).c_str()) << std::endl;
+	utils::setClanTag(clantags.at(settings::iClantag).c_str());
+}

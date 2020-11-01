@@ -62,6 +62,7 @@ bool __stdcall hkCreateMove(float frametime, CUserCmd* cmd)
 	float oldSidemove = cmd->sidemove;
 
 	//do stuff
+	modules::clantagChanger(cmd); // we (will) use tickcount for timing animations
 
 	modules::autohop(cmd);
 	modules::triggerbot(cmd);

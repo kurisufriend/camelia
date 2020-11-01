@@ -45,4 +45,7 @@ namespace settings
 
 	extern bool bAngleFix;
 	extern bool bThirdPerson;
+
+	extern bool bClantagChanger;
+	extern int iClantag;
 }
