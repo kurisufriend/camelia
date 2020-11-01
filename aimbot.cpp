@@ -102,5 +102,4 @@ void modules::aimbot(CUserCmd* cmd) //this misses legits for some reason, even w
 			shotLast = cmd->buttons & IN_ATTACK;
 		}
 	}
-
 }

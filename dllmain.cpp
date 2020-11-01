@@ -3,9 +3,6 @@
 // everything else is mine
 
 //todo
-//netvar manager
-//knifechanger
-//aimbot fov
 //autowall
 
 #include <Windows.h>
