@@ -92,11 +92,12 @@ void modules::clantagChanger(CUserCmd* cmd)
 {
 	if (!g::pentLocalPlayer)
 		return;
+	if ((cmd->tickcount % 20) != 0)
+		return;
 	if (!settings::bClantagChanger)
 	{
-		utils::setClanTag("");
+		//utils::setClanTag("");
 		return;
 	}
-	std::cout << (clantags.at(settings::iClantag).c_str()) << std::endl;
 	utils::setClanTag(clantags.at(settings::iClantag).c_str());
 }
