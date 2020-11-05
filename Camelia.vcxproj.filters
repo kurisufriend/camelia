@@ -199,6 +199,9 @@
     <Filter Include="modules\visuals\skinchanger">
       <UniqueIdentifier>{741aa149-171d-4039-850b-ae9ef9308507}</UniqueIdentifier>
     </Filter>
+    <Filter Include="sdk\interfaces\IFileSystem">
+      <UniqueIdentifier>{4fa46008-d014-4afe-92f9-c8ae0bc7cf93}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils.h">
@@ -345,6 +348,9 @@
     </ClInclude>
     <ClInclude Include="knifechanger.h">
       <Filter>modules\visuals\skinchanger</Filter>
+    </ClInclude>
+    <ClInclude Include="IFileSystem.h">
+      <Filter>sdk\interfaces\IFileSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

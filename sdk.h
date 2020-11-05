@@ -24,3 +24,4 @@
 #include "IPanel.h"
 #include "ISurface.h"
 #include "IGlobals.h"
+#include "IFileSystem.h"

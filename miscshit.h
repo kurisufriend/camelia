@@ -80,5 +80,6 @@ static std::vector<std::string> clantags =
     "getprime",
     "kurisu a cute",
     "sand reckoner",
-    "camelia"
+    "camelia",
+    "LOLnigger"
 };

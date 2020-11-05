@@ -1,4 +1,5 @@
 #pragma once
+#include "includes.h"
 namespace settings
 {
 	extern bool bESP;
@@ -8,7 +9,9 @@ namespace settings
 	extern bool bBoxESP;
 	extern bool bGlowESP;
 	extern bool bPlayerChams;
+	extern int iPlayerMaterial;
 	extern bool bArmChams;
+	extern int iArmsMaterial;
 	extern bool bRemoveArms;
 	extern bool bNightmode;
 	extern bool bForceCrosshair;

@@ -89,6 +89,10 @@ bool utils::setupInterfaces() // doing this here but hooks elsewhere triggers my
 	if (interfaces::pacSurface = (ISurface*)getInterface("vguimatsurface.dll", "VGUI_Surface031"); !interfaces::pacSurface)
 		return false;
 	std::cout << "got interface ISurface" << std::endl;
+
+	if (interfaces::pacFileSystem = (IFileSystem*)getInterface("filesystem_stdio.dll", "VFileSystem017"); !interfaces::pacFileSystem)
+		return false;
+	std::cout << "got interface IFileSystem" << std::endl;
 	
 	if (interfaces::pacClientMode = **(IClientMode***)((*reinterpret_cast<uintptr_t**>(interfaces::pacClient))[10] + 5); !interfaces::pacClientMode)
 		return false;

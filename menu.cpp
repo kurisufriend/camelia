@@ -217,6 +217,7 @@ void menu::render()
 			int yPos = windowTop + 25; // big brain genius auto padding i should win an award
 			drawToggle("arm chams", windowLeft + info::paddingValue, yPos, settings::bArmChams, D3DCOLOR_ARGB(255, 25, 25, 25));
 			drawToggle("remove arms", windowLeft + info::paddingValue, yPos, settings::bRemoveArms, D3DCOLOR_ARGB(255, 25, 25, 25));
+			drawMutex("chams material", windowLeft + info::paddingValue, yPos, settings::iArmsMaterial, chamsMaterials, D3DCOLOR_ARGB(255, 25, 25, 25));
 			drawSeparator(yPos);
 			drawToggle("force crosshair", windowLeft + info::paddingValue, yPos, settings::bForceCrosshair, D3DCOLOR_ARGB(255, 25, 25, 25));
 			drawToggle("recoil crosshair", windowLeft + info::paddingValue, yPos, settings::bRecoilCrosshair, D3DCOLOR_ARGB(255, 25, 25, 25));
@@ -232,11 +233,11 @@ void menu::render()
 			drawToggle("only when visible", windowLeft + info::paddingValue, yPos, settings::bESPOnVisible, D3DCOLOR_ARGB(255, 25, 25, 25));
 			drawSeparator(yPos);
 			drawToggle("chams", windowLeft + info::paddingValue, yPos, settings::bPlayerChams, D3DCOLOR_ARGB(255, 25, 25, 25));
+			drawMutex("chams material", windowLeft + info::paddingValue, yPos, settings::iPlayerMaterial, chamsMaterials, D3DCOLOR_ARGB(255, 25, 25, 25));
 			drawToggle("bounding box", windowLeft + info::paddingValue, yPos, settings::bBoxESP, D3DCOLOR_ARGB(255, 25, 25, 25));
 			drawToggle("name", windowLeft + info::paddingValue, yPos, settings::bNameESP, D3DCOLOR_ARGB(255, 25, 25, 25));
 			drawToggle("health", windowLeft + info::paddingValue, yPos, settings::bHealthESP, D3DCOLOR_ARGB(255, 25, 25, 25));
 			drawToggle("glow", windowLeft + info::paddingValue, yPos, settings::bGlowESP, D3DCOLOR_ARGB(255, 25, 25, 25));
-
 		}
 		else if (info::currentVisualsTab == 3) // world
 		{

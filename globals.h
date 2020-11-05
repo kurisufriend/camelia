@@ -27,4 +27,5 @@ namespace interfaces
 	extern IPanel* pacPanel;
 	extern ISurface* pacSurface;
 	extern IGlobals* pacGlobals;
+	extern IFileSystem* pacFileSystem;
 }

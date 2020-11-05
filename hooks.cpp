@@ -32,6 +32,9 @@ tDrawModelExecute oDrawModelExecute = 0;
 typedef void(__thiscall* tPaintTraverse)(IPanel*, unsigned int, bool, bool);
 tPaintTraverse oPaintTraverse;
 
+typedef bool(__fastcall* tLooseFileAllowed)(void*, void*);
+tLooseFileAllowed oLooseFileAllowed = 0;
+
 void __stdcall hkEndScene(LPDIRECT3DDEVICE9 o_pDevice)
 {
 	if (!g::pDevice)
@@ -148,8 +151,9 @@ void __fastcall hkDrawModelExecute(void* _this, int edx, void* ctx, const DrawMo
 	if (!pInfo.pModel)
 		return;
 	const char* name = interfaces::pacModelInfoClient->GetModelName(pInfo.pModel);
-	IMaterial* material = interfaces::pacMaterialSystem->FindMaterial("debug/debugambientcube");
-	if (strstr(name, "models/player") && material && settings::bPlayerChams)
+	IMaterial* standardMaterial = interfaces::pacMaterialSystem->FindMaterial(chamsMaterials.at(settings::iPlayerMaterial).c_str());
+	IMaterial* armsMaterial = interfaces::pacMaterialSystem->FindMaterial(chamsMaterials.at(settings::iArmsMaterial).c_str());
+	if (strstr(name, "models/player") && standardMaterial && settings::bPlayerChams)
 	{
 		CBasePlayer* curEntity = (CBasePlayer*)interfaces::pacClientEntityList->GetClientEntity(pInfo.entity_index);
 		if (!curEntity || curEntity->getDormant() || curEntity->getHealth() < 0 || curEntity->getTeamNum() == g::pentLocalPlayer->getTeamNum())
@@ -157,21 +161,21 @@ void __fastcall hkDrawModelExecute(void* _this, int edx, void* ctx, const DrawMo
 			oDrawModelExecute(_this, edx, ctx, state, pInfo, pCustomBoneToWorld);
 			return;
 		}
-		material->SetMaterialVarFlag(MATERIAL_VAR_IGNOREZ, !settings::bESPOnVisible);
-		material->ColorModulate(1.f, 1.f, 0.f);
-		material->AlphaModulate(1.f);
+		standardMaterial->SetMaterialVarFlag(MATERIAL_VAR_IGNOREZ, !settings::bESPOnVisible);
+		standardMaterial->ColorModulate(1.f, 1.f, 0.f);
+		standardMaterial->AlphaModulate(1.f);
 
-		interfaces::pacModelRender->ForcedMaterialOverride(material);
+		interfaces::pacModelRender->ForcedMaterialOverride(standardMaterial);
 		oDrawModelExecute(_this, edx, ctx, state, pInfo, pCustomBoneToWorld);
 		interfaces::pacModelRender->ForcedMaterialOverride(nullptr);
 	}
-	else if (strstr(name + 17, "arms") && material && settings::bArmChams)
+	else if (strstr(name + 17, "arms") && armsMaterial && settings::bArmChams)
 	{
-		material->SetMaterialVarFlag(MATERIAL_VAR_IGNOREZ, false);
-		material->ColorModulate(.56f, .56f, .81f);
-		material->AlphaModulate((!settings::bRemoveArms));
+		armsMaterial->SetMaterialVarFlag(MATERIAL_VAR_IGNOREZ, false);
+		armsMaterial->ColorModulate(.56f, .56f, .81f);
+		armsMaterial->AlphaModulate((!settings::bRemoveArms));
 
-		interfaces::pacModelRender->ForcedMaterialOverride(material);
+		interfaces::pacModelRender->ForcedMaterialOverride(armsMaterial);
 		oDrawModelExecute(_this, edx, ctx, state, pInfo, pCustomBoneToWorld);
 		interfaces::pacModelRender->ForcedMaterialOverride(nullptr);
 	}
@@ -199,6 +203,11 @@ void __stdcall hkPaintTraverse(unsigned int panel, bool forceRepaint, bool allow
 	oPaintTraverse(interfaces::pacPanel, panel, forceRepaint, forceRepaint);
 }
 
+bool __fastcall hkLooseFileAllowed(void* ecx, void* edx)
+{
+	return true;
+}
+
 bool hooks::setupHooks()
 {
 	std::cout << "reached hooks" << std::endl;
@@ -216,6 +225,8 @@ bool hooks::setupHooks()
 	void* DrawModelExecute = reinterpret_cast<void*>(getVirtual(interfaces::pacModelRender, 21));
 
 	void* PaintTraverse = reinterpret_cast<void*>(getVirtual(interfaces::pacPanel, 41));
+
+	void* LooseFileAllowed = reinterpret_cast<void*>(getVirtual(interfaces::pacFileSystem, 128));
 
 	std::cout << "initializing da hooking" << std::endl;
 
@@ -264,6 +275,12 @@ bool hooks::setupHooks()
 		return false;
 
 	std::cout << "PaintTraverse hooked" << std::endl;
+	std::cout << "reached hook LooseFileAllowed" << std::endl;
+
+	if (MH_CreateHook(LooseFileAllowed, &hkLooseFileAllowed, reinterpret_cast<void**>(&oLooseFileAllowed)) != MH_OK)
+		return false;
+
+	std::cout << "LooseFileAllowed hooked" << std::endl;
 	std::cout << "reached enable hooks" << std::endl;
 
 	if (MH_EnableHook(MH_ALL_HOOKS) != MH_OK)

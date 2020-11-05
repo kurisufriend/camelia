@@ -5,6 +5,25 @@
 #include "imageformats.h"
 #include "miscshit.h"
 
+
+static std::vector<std::string> chamsMaterials =
+{
+	"debug/debugambientcube",
+	"models/inventory_items/trophy_majors/gold",
+	"models/player/ct_fbi/ct_fbi_glass",
+	"models/gibs/glass/glass",
+	"models/inventory_items/trophy_majors/crystal_clear",
+	"models/inventory_items/wildfire_gold/wildfire_gold_detail",
+	"models/inventory_items/trophy_majors/crystal_blue",
+	"models/inventory_items/trophy_majors/velvet",
+	"models/inventory_items/cologne_prediction/cologne_prediction_glass",
+	"models/inventory_items/dogtags/dogtags_outline",
+	"models/inventory_items/dogtags/dogtags_lightray",
+	"models/inventory_items/contributor_map_tokens/contributor_charset_color",
+	"models/inventory_items/music_kit/darude_01/mp3_detail"
+};
+
+
 //-----------------------------------------------------------------------------
 // Forward declarations
 //-----------------------------------------------------------------------------

@@ -191,6 +191,7 @@
     <ClInclude Include="IClientMode.h" />
     <ClInclude Include="IEngineClient.h" />
     <ClInclude Include="IEngineTrace.h" />
+    <ClInclude Include="IFileSystem.h" />
     <ClInclude Include="IGlobals.h" />
     <ClInclude Include="IInput.h" />
     <ClInclude Include="imageformats.h" />

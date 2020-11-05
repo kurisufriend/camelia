@@ -21,3 +21,4 @@ IMaterialSystem* interfaces::pacMaterialSystem = 0;
 IPanel* interfaces::pacPanel = 0;
 ISurface* interfaces::pacSurface = 0;
 IGlobals* interfaces::pacGlobals = 0;
+IFileSystem* interfaces::pacFileSystem = 0;
