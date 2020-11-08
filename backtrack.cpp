@@ -3,7 +3,7 @@
 #include "globals.h"
 
 static std::vector<backtrackRecord> records[64];
-
+/*
 bool isValid(float simtime)
 {
     static ConVar* svMaxUnlag = interfaces::pacCvar->FindVar("sv_maxunlag");
@@ -18,9 +18,9 @@ int timeToTicks(float time)
 {
 	return (int)(.5f + time / interfaces::pacGlobals->intervalPerTick);
 }
-
+*/
 void modules::backtrack(CUserCmd* cmd)
-{
+{/*
     if (!g::pentLocalPlayer)
         return;
     for (int i; i < 64; i++)
@@ -42,5 +42,5 @@ void modules::backtrack(CUserCmd* cmd)
             curRecords.pop_back();
 
         records[i] = curRecords;
-    }
+    }*/
 }
