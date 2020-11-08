@@ -62,6 +62,9 @@
     <ClCompile Include="knifechanger.cpp">
       <Filter>modules\visuals\skinchanger</Filter>
     </ClCompile>
+    <ClCompile Include="backtrack.cpp">
+      <Filter>modules\backtrack</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="sdk">
@@ -190,9 +193,6 @@
     <Filter Include="dxsdk\lib">
       <UniqueIdentifier>{e6f69e44-e37e-4ca7-866a-28984753d871}</UniqueIdentifier>
     </Filter>
-    <Filter Include="netvar">
-      <UniqueIdentifier>{3636788f-ffb3-4972-a46e-c4a4771b62a2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="offsets">
       <UniqueIdentifier>{ced40dc1-b624-4236-bf40-0bb68c660e5f}</UniqueIdentifier>
     </Filter>
@@ -201,6 +201,15 @@
     </Filter>
     <Filter Include="sdk\interfaces\IFileSystem">
       <UniqueIdentifier>{4fa46008-d014-4afe-92f9-c8ae0bc7cf93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="modules\backtrack">
+      <UniqueIdentifier>{5a798783-c348-4421-a9e0-63ce90ff011b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="netvar">
+      <UniqueIdentifier>{3636788f-ffb3-4972-a46e-c4a4771b62a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\interfaces\INetchannelInfo">
+      <UniqueIdentifier>{7f698ec2-cd4d-4a94-93e7-bcce4e6714e1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -351,6 +360,12 @@
     </ClInclude>
     <ClInclude Include="IFileSystem.h">
       <Filter>sdk\interfaces\IFileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="backtrack.h">
+      <Filter>modules\backtrack</Filter>
+    </ClInclude>
+    <ClInclude Include="INetchannelInfo.h">
+      <Filter>sdk\interfaces\INetchannelInfo</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

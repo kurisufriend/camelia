@@ -2,12 +2,12 @@
 #include "Vector.h"
 #include "includes.h"
 #include "miscshit.h"
-struct matrix3x4_t
+struct matrix3x4
 {
-	matrix3x4_t()
+	matrix3x4()
 	{}
 
-	matrix3x4_t(
+	matrix3x4(
 		float m00, float m01, float m02, float m03,
 		float m10, float m11, float m12, float m13,
 		float m20, float m21, float m22, float m23)
@@ -50,7 +50,7 @@ struct matrix3x4_t
 	// Creates a matrix where the X axis = forward
 	// the Y axis = left, and the Z axis = up
 	//-----------------------------------------------------------------------------
-	matrix3x4_t(const Vector& xAxis, const Vector& yAxis, const Vector& zAxis, const Vector& vecOrigin)
+	matrix3x4(const Vector& xAxis, const Vector& yAxis, const Vector& zAxis, const Vector& vecOrigin)
 	{
 		Init(xAxis, yAxis, zAxis, vecOrigin);
 	}

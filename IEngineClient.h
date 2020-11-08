@@ -14,7 +14,7 @@ struct player_info_t
 
 	char __pad1[0x17B];
 };
-// gamerfood
+// have a good day :D
 class IEngineClient
 {
 public:
@@ -96,7 +96,7 @@ public:
 	virtual int GetOcclusionViewId(void) = 0;
 	virtual void* SaveAllocMemory(size_t num, size_t size) = 0;
 	virtual void SaveFreeMemory(void* pSaveMem) = 0;
-	virtual void** GetNetChannelInfo(void) = 0;
+	virtual INetChannelInfo* GetNetChannelInfo(void) = 0;
 	virtual void DebugDrawPhysCollide(const void** pCollide, void** pMaterial, const void*& transform, const void*& color) = 0; //79
 	virtual void CheckPoint(const char* pName) = 0; // 80
 	virtual void DrawPortals() = 0;

@@ -8,6 +8,7 @@
 #include "CUserCmd.h"
 #include "CGlowObjectManager.h"
 #include "clientFrameStage.h"
+#include "matrix.h"
 
 // interfaces
 #include "IClientEntityList.h"
@@ -25,3 +26,4 @@
 #include "ISurface.h"
 #include "IGlobals.h"
 #include "IFileSystem.h"
+#include "INetchannelInfo.h"

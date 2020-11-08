@@ -23,6 +23,19 @@ constexpr float DEG2RAD(const float x)
 }
 
 
+enum hitgroupIndex : int
+{
+    HITGROUP_GENERIC = 0,
+    HITGROUP_HEAD,
+    HITGROUP_CHEST,
+    HITGROUP_STOMACH,
+    HITGROUP_LEFTARM,
+    HITGROUP_RIGHTARM,
+    HITGROUP_LEFTLEG,
+    HITGROUP_RIGHTLEG,
+    HITGROUP_GEAR = 10
+};
+
 struct Vector4 { float x, y, z, w; };
 
 // source sdk 2013

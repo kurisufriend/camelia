@@ -159,12 +159,14 @@
   <ItemGroup>
     <ClInclude Include="aimbot.h" />
     <ClInclude Include="antiaim.h" />
+    <ClInclude Include="backtrack.h" />
     <ClInclude Include="clientFrameStage.h" />
     <ClInclude Include="CUserCmd.h" />
     <ClInclude Include="drawing.h" />
     <ClInclude Include="entities.h" />
     <ClCompile Include="aimbot.cpp" />
     <ClCompile Include="antiaim.cpp" />
+    <ClCompile Include="backtrack.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="drawing.cpp" />
     <ClCompile Include="ESP.cpp" />
@@ -197,6 +199,7 @@
     <ClInclude Include="imageformats.h" />
     <ClInclude Include="IMaterial.h" />
     <ClInclude Include="IMaterialSystem.h" />
+    <ClInclude Include="INetchannelInfo.h" />
     <ClInclude Include="IPanel.h" />
     <ClInclude Include="ISurface.h" />
     <ClInclude Include="IVModelInfo.h" />

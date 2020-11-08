@@ -1,5 +1,6 @@
 #pragma once
 #include "includes.h"
+
 #define CHECK_VALID( _v ) 0
 #define Assert( _exp ) ((void)0)
 
@@ -80,6 +81,5 @@ static std::vector<std::string> clantags =
     "getprime",
     "kurisu a cute",
     "sand reckoner",
-    "camelia",
-    "LOLnigger"
+    "camelia"
 };

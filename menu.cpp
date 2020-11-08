@@ -129,11 +129,11 @@ void menu::drawSlider(std::string label, int x1, int& y1, int& tracker, int min,
 	bool isPressed = (isHovered && (GetAsyncKeyState(VK_LBUTTON) & 0x8000));
 	if (isHovered)
 		color = D3DCOLOR_ARGB(255, 120, 120, 120);
-	int sliderX = x1 + (tracker * (200 / max));
+	int sliderX = std::lrint((float)x1 + ((float)tracker * (200.f / (float)max))); // fuck doubles
 	if (isPressed)
 	{
 		sliderX = g::mousePosition.x;
-		tracker = ((g::mousePosition.x - x1) / 200) * max;
+		tracker = std::lrint(((g::mousePosition.x - x1) / 200.f) * (float)max);
 	}
 	D3DCOLOR textColor;
 	if (sliderX > (x1 + drawing::getTextWidth(label.c_str(), g::font)))
@@ -243,7 +243,7 @@ void menu::render()
 		{
 			int yPos = windowTop + 25; // big brain genius auto padding i should win an award
 			drawToggle("nightmode", windowLeft + info::paddingValue, yPos, settings::bNightmode, D3DCOLOR_ARGB(255, 25, 25, 25));
-			drawSlider("nightmode amount", windowLeft + info::paddingValue, yPos, settings::iNightmodeLevel, 0, 11, D3DCOLOR_ARGB(255, 25, 25, 25));
+			drawSlider("nightmode amount", windowLeft + info::paddingValue, yPos, settings::iNightmodeLevel, 0, 10, D3DCOLOR_ARGB(255, 25, 25, 25));
 			drawSeparator(yPos);
 			drawToggle("grenade prediction", windowLeft + info::paddingValue, yPos, settings::bGrenadePrediction, D3DCOLOR_ARGB(255, 25, 25, 25));
 		}
@@ -259,7 +259,7 @@ void menu::render()
 		int yPos = windowTop + 25; // big brain genius auto padding i should win an award
 		drawToggle("autohop", windowLeft + info::paddingValue, yPos, settings::bAutohop, D3DCOLOR_ARGB(255, 25, 25, 25));
 		drawToggle("slow walk", windowLeft + info::paddingValue, yPos, settings::bSlowWalk, D3DCOLOR_ARGB(255, 25, 25, 25));
-		drawSlider("slow walk amount", windowLeft + info::paddingValue, yPos, settings::iSlowWalkAmount, 0, 451, D3DCOLOR_ARGB(255, 25, 25, 25));
+		drawSlider("slow walk amount", windowLeft + info::paddingValue, yPos, settings::iSlowWalkAmount, 0, 450, D3DCOLOR_ARGB(255, 25, 25, 25));
 
 	}
 	else if (info::currentTab == 5) // misc

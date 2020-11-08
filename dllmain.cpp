@@ -25,7 +25,9 @@ BOOL WINAPI initCamelia(HMODULE threadHandle)
     if (!utils::setup())
         std::cout << "failed in setup" << std::endl;
     while (!GetAsyncKeyState(VK_END))
+    {
         Sleep(10);
+    }
     std::cout << "reached end :(";
     std::cout << "destructing hooks :(" << std::endl;
     hooks::destructHooks();

@@ -238,7 +238,7 @@ struct mstudiobone_t
 	Vector posscale;
 	Vector rotscale;
 
-	matrix3x4_t poseToBone;
+	matrix3x4 poseToBone;
 	Quaternion qAlignment;
 	int flags;
 	int proctype;
