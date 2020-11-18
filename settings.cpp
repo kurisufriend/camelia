@@ -39,10 +39,16 @@ bool settings::bAutoStop;
 int settings::iMinimumHitchance;
 
 bool settings::bTriggerbot;
+bool settings::bTriggerbotRecoil;
+
+bool settings::bBacktrack;
 
 bool settings::bAutohop;
+bool settings::bAutostrafer;
 bool settings::bSlowWalk;
 int settings::iSlowWalkAmount;
+bool settings::bUnlockStamina;
+bool settings::bSpeedGraph;
 
 bool settings::bAngleFix = false;
 bool settings::bThirdPerson = false;

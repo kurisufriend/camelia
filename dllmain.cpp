@@ -1,10 +1,16 @@
 // supa kewl see ess goh chit
-// sdk is from different places, usually the actual source leak, some oss base, or (rarely) reversed by me
+// sdk is from different places, usually the actual source leak, some oss base, or (rarely) myself
 // everything else is mine
 
 //todo
 //autowall
-
+//configs
+//key control
+//dropdown control
+//refactor menu fw
+//fov for aimbot
+//colorpicker
+//basic desync
 #include <Windows.h>
 #include <iostream>
 #include "offsets.h"

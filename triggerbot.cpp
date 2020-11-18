@@ -12,13 +12,14 @@ void modules::triggerbot(CUserCmd* cmd) // use traces later, i'm too brainlet fo
 	if (!GetAsyncKeyState(VK_XBUTTON2))
 		return;
 	Vector viewAngles = cmd->viewangles;
-	viewAngles += g::pentLocalPlayer->getAimPunchAngle() * 2.f;
+	if (settings::bTriggerbotRecoil)
+		viewAngles += g::pentLocalPlayer->getAimPunchAngle() * 2.f;
 
 	Vector vecStart, vecEnd, vecForward;
 	utils::angleVectors(viewAngles, &vecForward);
 
 	vecStart = g::pentLocalPlayer->getEyePosition();
-	vecForward *= 9999;
+	vecForward *= 99999;
 	vecEnd = vecStart + vecForward;
 
 	CGameTrace trace;
@@ -28,7 +29,7 @@ void modules::triggerbot(CUserCmd* cmd) // use traces later, i'm too brainlet fo
 
 	ray.Init(vecStart, vecEnd);
 
-	interfaces::pacEngineTrace->TraceRay(ray, MASK_SHOT | CONTENTS_GRATE, &tracefilter, &trace);
+	interfaces::pacEngineTrace->TraceRay(ray, MASK_SHOT_HULL | CONTENTS_HITBOX, &tracefilter, &trace);
 
 	CBaseEntity* hitEntity = (CBaseEntity*)trace.hit_entity;
 

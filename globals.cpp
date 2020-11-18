@@ -4,6 +4,7 @@ DWORD g::dwClientModule = 0;
 CBasePlayer* g::pentLocalPlayer = 0;
 LPDIRECT3DDEVICE9 g::pDevice = 0;
 LPD3DXFONT g::font;
+LPD3DXFONT g::fontLarge;
 bool g::menuOpen = false;
 Vector2 g::mousePosition;
 Vector g::realAngles;

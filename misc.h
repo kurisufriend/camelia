@@ -11,4 +11,6 @@ namespace modules
 	void grenadePrediction();
 	void slowWalk(CUserCmd* cmd);
 	void clantagChanger(CUserCmd* cmd);
+	void autostrafer(CUserCmd* cmd);
+	void speedGraph();
 }

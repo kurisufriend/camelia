@@ -1,5 +1,7 @@
 #pragma once
 
+#define NOMINMAX
+
 #include <Windows.h>
 #include "dxsdk/Include/d3d9.h"
 #include "dxsdk/Include/d3dx9.h"

@@ -8,6 +8,7 @@ namespace g // muh gamerfood nostalgia
 	extern CBasePlayer* pentLocalPlayer;
 	extern LPDIRECT3DDEVICE9 pDevice;
 	extern LPD3DXFONT font;
+	extern LPD3DXFONT fontLarge;
 	extern bool menuOpen;
 	extern Vector2 mousePosition;
 	extern Vector realAngles;

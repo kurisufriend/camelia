@@ -12,6 +12,7 @@ namespace info
 	static int currentTab = -1;
 
 	static int currentVisualsTab = 1;
+	static int currentAimTab = 1;
 }
 
 /* callbacks */
@@ -182,17 +183,27 @@ void menu::render()
 	/* tabs end */
 	if (info::currentTab == 1) // aim
 	{
-		int yPos = windowTop + 25; // big brain genius auto padding i should win an award
-		drawToggle("aimbot", windowLeft + info::paddingValue, yPos, settings::bAimbot, D3DCOLOR_ARGB(255, 25, 25, 25));
-		drawSlider("minimum hit chance", windowLeft + info::paddingValue, yPos, settings::iMinimumHitchance, 0, 101, D3DCOLOR_ARGB(255, 25, 25, 25));
-		//drawSlider("aimbot fov", windowLeft + info::paddingValue, yPos, settings::iAimbotFOV, 0, 180, D3DCOLOR_ARGB(255, 25, 25, 25));
-		drawToggle("silent", windowLeft + info::paddingValue, yPos, settings::bSilentAimbot, D3DCOLOR_ARGB(255, 25, 25, 25));
-		drawToggle("smoothed", windowLeft + info::paddingValue, yPos, settings::bAimbotSmoothing, D3DCOLOR_ARGB(255, 25, 25, 25));
-		drawSlider("smooth amount", windowLeft + info::paddingValue, yPos, settings::iSmoothingAmount, 0, 100, D3DCOLOR_ARGB(255, 25, 25, 25));
-		drawToggle("autoshot", windowLeft + info::paddingValue, yPos, settings::bAutoShoot, D3DCOLOR_ARGB(255, 25, 25, 25));
-		//drawToggle("autostop", windowLeft + info::paddingValue, yPos, settings::bAutoStop, D3DCOLOR_ARGB(255, 25, 25, 25));
-		drawSeparator(yPos);
-		drawToggle("triggerbot", windowLeft + info::paddingValue, yPos, settings::bTriggerbot, D3DCOLOR_ARGB(255, 25, 25, 25));
+		int xPos = windowLeft + 5;
+		drawTab("aimbot", xPos, windowBottom - 34, info::currentAimTab, 1);
+		drawTab("triggerbot", xPos, windowBottom - 34, info::currentAimTab, 2);
+		if (info::currentAimTab == 1)
+		{
+			int yPos = windowTop + 25; // big brain genius auto padding i should win an award
+			drawToggle("aimbot", windowLeft + info::paddingValue, yPos, settings::bAimbot, D3DCOLOR_ARGB(255, 25, 25, 25));
+			drawSlider("minimum hit chance", windowLeft + info::paddingValue, yPos, settings::iMinimumHitchance, 0, 101, D3DCOLOR_ARGB(255, 25, 25, 25));
+			//drawSlider("aimbot fov", windowLeft + info::paddingValue, yPos, settings::iAimbotFOV, 0, 180, D3DCOLOR_ARGB(255, 25, 25, 25));
+			drawToggle("silent", windowLeft + info::paddingValue, yPos, settings::bSilentAimbot, D3DCOLOR_ARGB(255, 25, 25, 25));
+			drawToggle("smoothed", windowLeft + info::paddingValue, yPos, settings::bAimbotSmoothing, D3DCOLOR_ARGB(255, 25, 25, 25));
+			drawSlider("smooth amount", windowLeft + info::paddingValue, yPos, settings::iSmoothingAmount, 0, 100, D3DCOLOR_ARGB(255, 25, 25, 25));
+			drawToggle("autoshot", windowLeft + info::paddingValue, yPos, settings::bAutoShoot, D3DCOLOR_ARGB(255, 25, 25, 25));
+			//drawToggle("autostop", windowLeft + info::paddingValue, yPos, settings::bAutoStop, D3DCOLOR_ARGB(255, 25, 25, 25));
+		}
+		if (info::currentAimTab == 2)
+		{
+			int yPos = windowTop + 25; // big brain genius auto padding i should win an award
+			drawToggle("triggerbot", windowLeft + info::paddingValue, yPos, settings::bTriggerbot, D3DCOLOR_ARGB(255, 25, 25, 25));
+			drawToggle("factor recoil", windowLeft + info::paddingValue, yPos, settings::bTriggerbotRecoil, D3DCOLOR_ARGB(255, 25, 25, 25));
+		}
 	}
 	else if (info::currentTab == 2) // aa
 	{
@@ -258,9 +269,11 @@ void menu::render()
 	{
 		int yPos = windowTop + 25; // big brain genius auto padding i should win an award
 		drawToggle("autohop", windowLeft + info::paddingValue, yPos, settings::bAutohop, D3DCOLOR_ARGB(255, 25, 25, 25));
+		drawToggle("autostrafer", windowLeft + info::paddingValue, yPos, settings::bAutostrafer, D3DCOLOR_ARGB(255, 25, 25, 25));
 		drawToggle("slow walk", windowLeft + info::paddingValue, yPos, settings::bSlowWalk, D3DCOLOR_ARGB(255, 25, 25, 25));
 		drawSlider("slow walk amount", windowLeft + info::paddingValue, yPos, settings::iSlowWalkAmount, 0, 450, D3DCOLOR_ARGB(255, 25, 25, 25));
-
+		drawToggle("unlock stamina", windowLeft + info::paddingValue, yPos, settings::bUnlockStamina, D3DCOLOR_ARGB(255, 25, 25, 25));
+		drawToggle("visualise speed", windowLeft + info::paddingValue, yPos, settings::bSpeedGraph, D3DCOLOR_ARGB(255, 25, 25, 25));
 	}
 	else if (info::currentTab == 5) // misc
 	{

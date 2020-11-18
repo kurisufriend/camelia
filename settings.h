@@ -41,10 +41,16 @@ namespace settings
 	extern int iMinimumHitchance;
 
 	extern bool bTriggerbot;
+	extern bool bTriggerbotRecoil;
 
 	extern bool bAutohop;
+	extern bool bAutostrafer;
 	extern bool bSlowWalk;
 	extern int iSlowWalkAmount;
+	extern bool bUnlockStamina;
+	extern bool bSpeedGraph;
+
+	extern bool bBacktrack;
 
 	extern bool bAngleFix;
 	extern bool bThirdPerson;

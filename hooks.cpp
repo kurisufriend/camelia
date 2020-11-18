@@ -41,7 +41,10 @@ void __stdcall hkEndScene(LPDIRECT3DDEVICE9 o_pDevice)
 		g::pDevice = o_pDevice;
 	if (!g::font)
 		D3DXCreateFont(g::pDevice, 17, 0, FW_NORMAL, 0, FALSE, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, NONANTIALIASED_QUALITY, DEFAULT_PITCH | FF_MODERN, "Courier New", &g::font);
+	if (!g::fontLarge)
+		D3DXCreateFont(g::pDevice, 20, 0, FW_BOLD, 0, FALSE, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, ANTIALIASED_QUALITY, DEFAULT_PITCH, "Courier New", &g::fontLarge);
 	modules::ESP();
+	modules::speedGraph();
 	menu::render();
 	oEndScene(g::pDevice);
 }
@@ -67,11 +70,17 @@ bool __stdcall hkCreateMove(float frametime, CUserCmd* cmd)
 	//do stuff
 	modules::clantagChanger(cmd); // we (will) use tickcount for timing animations
 
+	if (settings::bUnlockStamina)
+		cmd->buttons |= IN_BULLRUSH;
+
 	modules::autohop(cmd);
+	modules::autostrafer(cmd);
 	modules::triggerbot(cmd);
 	modules::antiAim(cmd);
 	modules::aimbot(cmd);
 	modules::fakeLag(cmd, sendPacket);
+
+	//modules::backtrack(cmd);
 
 	utils::correctMovement(oldViewangles, cmd, oldForwardmove, oldSidemove);
 

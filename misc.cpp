@@ -4,6 +4,7 @@
 #include "globals.h"
 #include "offsets.h"
 #include "settings.h"
+#include "drawing.h"
 void modules::autohop(CUserCmd* cmd)
 {
 	if (!settings::bAutohop)
@@ -83,7 +84,7 @@ void modules::slowWalk(CUserCmd* cmd)
 		return;
 	if (!settings::bSlowWalk)
 		return;
-	if (!GetAsyncKeyState(VK_SHIFT))
+	if (!GetAsyncKeyState(VK_SPACE))
 		return;
 	cmd->forwardmove = std::clamp(cmd->forwardmove, (float)-settings::iSlowWalkAmount, (float)settings::iSlowWalkAmount);
 	cmd->sidemove = std::clamp(cmd->sidemove, (float)-settings::iSlowWalkAmount, (float)settings::iSlowWalkAmount);
@@ -100,4 +101,38 @@ void modules::clantagChanger(CUserCmd* cmd)
 		return;
 	}
 	utils::setClanTag(clantags.at(settings::iClantag).c_str());
+}
+
+void modules::autostrafer(CUserCmd* cmd)
+{
+	if (!settings::bAutostrafer)
+		return;
+	if (!GetAsyncKeyState(VK_SPACE))
+		return;
+	if (cmd->mousedx < 0)
+		cmd->sidemove = -450.0f;
+	else if (cmd->mousedx > 0)
+		cmd->sidemove = 450.0f;
+}
+
+void modules::speedGraph()
+{
+	if (!g::pentLocalPlayer)
+		return;
+	if (!settings::bSpeedGraph)
+		return;
+	int vel = lrint(g::pentLocalPlayer->getVelocity().Length2D());
+	const char* velString = std::to_string(vel).c_str(); // charp because we only use it in text drawing and size
+	int velStringSize = drawing::getTextWidth(velString, g::fontLarge);
+	static std::vector<int> records;
+	records.push_back(lrint(vel / 5));
+	if (records.size() > 150)
+		records.erase(records.begin());
+	int x = GetSystemMetrics(SM_CXSCREEN) / 2;
+	int y = GetSystemMetrics(SM_CYSCREEN) - 50;
+	drawing::drawText(g::fontLarge, x - (velStringSize / 2), y, D3DCOLOR_ARGB(255, 255, 255, 255), std::to_string(vel).c_str());
+	for (int i = 0; i < records.size(); i++)
+	{
+		drawing::drawPixel((x + i) - (records.size() / 2), y - (records.at(i)), D3DCOLOR_ARGB(255, 255, 255, 255));
+	}
 }

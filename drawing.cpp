@@ -8,6 +8,12 @@ void drawing::drawFilledRect(int x, int y, int w, int h, D3DCOLOR color)
     D3DRECT rect = { x, y, x + w, y + h };
     g::pDevice->Clear(1, &rect, D3DCLEAR_TARGET, color, 0, 0);
 }
+
+void drawing::drawPixel(int x, int y, D3DCOLOR color)
+{
+    drawing::drawFilledRect(x, y, 1, 1, color);
+}
+
 void drawing::drawFilledRect2(int x, int y, int w, int h, D3DCOLOR color)
 {
     D3DRECT rect = { x, y, w, h };
@@ -30,9 +36,9 @@ void drawing::drawLine(float x1, float y1, float x2, float y2, float width, bool
 
 void drawing::drawText(LPD3DXFONT font, unsigned int x, unsigned int y, D3DCOLOR fontColor, LPCSTR Message)
 {
-    RECT rct; //Font
+    RECT rct;
     rct.left = x;
-    rct.right = 1680;
+    rct.right = 1920; // note todo dolater marker important info: make this dynamic im catchign autism
     rct.top = y;
     rct.bottom = rct.top + 200;
     font->DrawTextA(NULL, Message, -1, &rct, 0, fontColor);

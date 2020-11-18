@@ -5,7 +5,6 @@
 struct backtrackRecord
 {
 	int tickcount;
-	float simtime;
 	Vector headPos;
 };
 

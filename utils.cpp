@@ -358,3 +358,17 @@ void utils::setClanTag(const char* tag)
 
 	pSetClanTag(tag, tag);
 }
+
+void utils::rotateMovement(CUserCmd* pCmd, float rotation)
+{
+	rotation = DEG2RAD(rotation);
+
+	float cos_rot = cos(rotation);
+	float sin_rot = sin(rotation);
+
+	float new_forwardmove = (cos_rot * pCmd->forwardmove) - (sin_rot * pCmd->sidemove);
+	float new_sidemove = (sin_rot * pCmd->forwardmove) + (cos_rot * pCmd->sidemove);
+
+	pCmd->forwardmove = new_forwardmove;
+	pCmd->sidemove = new_sidemove;
+}
