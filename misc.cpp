@@ -84,7 +84,7 @@ void modules::slowWalk(CUserCmd* cmd)
 		return;
 	if (!settings::bSlowWalk)
 		return;
-	if (!GetAsyncKeyState(VK_SPACE))
+	if (!GetAsyncKeyState(VK_SHIFT))
 		return;
 	cmd->forwardmove = std::clamp(cmd->forwardmove, (float)-settings::iSlowWalkAmount, (float)settings::iSlowWalkAmount);
 	cmd->sidemove = std::clamp(cmd->sidemove, (float)-settings::iSlowWalkAmount, (float)settings::iSlowWalkAmount);
@@ -102,7 +102,6 @@ void modules::clantagChanger(CUserCmd* cmd)
 	}
 	utils::setClanTag(clantags.at(settings::iClantag).c_str());
 }
-
 void modules::autostrafer(CUserCmd* cmd)
 {
 	if (!settings::bAutostrafer)
@@ -114,25 +113,37 @@ void modules::autostrafer(CUserCmd* cmd)
 	else if (cmd->mousedx > 0)
 		cmd->sidemove = 450.0f;
 }
-
-void modules::speedGraph()
+void modules::updateSpeedGraph() // called in cm
 {
 	if (!g::pentLocalPlayer)
 		return;
 	if (!settings::bSpeedGraph)
 		return;
 	int vel = lrint(g::pentLocalPlayer->getVelocity().Length2D());
-	const char* velString = std::to_string(vel).c_str(); // charp because we only use it in text drawing and size
+	g::speedGraphShitFuck.push_back(lrint(vel / 3));
+	if (g::speedGraphShitFuck.size() > 200)
+		g::speedGraphShitFuck.erase(g::speedGraphShitFuck.begin());
+}
+void modules::drawSpeedGraph() //endscene
+{
+	if (!g::pentLocalPlayer)
+		return;
+	if (!settings::bSpeedGraph)
+		return;
+	int vel = lrint(g::pentLocalPlayer->getVelocity().Length2D());
+	const char* velString = std::to_string(vel).c_str(); // charp because we only use it in text drawing and size// poor man's string conversion lmfao
 	int velStringSize = drawing::getTextWidth(velString, g::fontLarge);
-	static std::vector<int> records;
-	records.push_back(lrint(vel / 5));
-	if (records.size() > 150)
-		records.erase(records.begin());
 	int x = GetSystemMetrics(SM_CXSCREEN) / 2;
 	int y = GetSystemMetrics(SM_CYSCREEN) - 50;
 	drawing::drawText(g::fontLarge, x - (velStringSize / 2), y, D3DCOLOR_ARGB(255, 255, 255, 255), std::to_string(vel).c_str());
-	for (int i = 0; i < records.size(); i++)
+	//Vector2 oldPoint = Vector2((x + 0) - (g::speedGraphShitFuck.size() / 2), y - (g::speedGraphShitFuck.at(0)));
+	for (int i = 0; i < g::speedGraphShitFuck.size(); i++)
 	{
-		drawing::drawPixel((x + i) - (records.size() / 2), y - (records.at(i)), D3DCOLOR_ARGB(255, 255, 255, 255));
+		drawing::drawPixel((x + i) - (g::speedGraphShitFuck.size() / 2), y - (g::speedGraphShitFuck.at(i)), D3DCOLOR_ARGB(255, 255, 255, 255));
+		// lines lag the shit out of everything
+		//Vector2 oldPoint = Vector2((x + 0) - (g::speedGraphShitFuck.size() / 2), y - (g::speedGraphShitFuck.at(0)));
+		//Vector2 curPoint = Vector2((x + i) - (g::speedGraphShitFuck.size() / 2), y - (g::speedGraphShitFuck.at(i)));
+		//drawing::drawLine(oldPoint.x, oldPoint.y, curPoint.x, curPoint.y, 1, true, D3DCOLOR_ARGB(255, 255, 255, 255));
+		//oldPoint = curPoint;
 	}
 }

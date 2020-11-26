@@ -4,6 +4,7 @@
 #include "ESP.h"
 #include "triggerbot.h"
 #include "antiaim.h"
+#include "autowall.h"
 #include "aimbot.h"
 #include "knifechanger.h"
 #include "backtrack.h"

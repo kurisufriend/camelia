@@ -3,6 +3,7 @@
 #include "settings.h"
 #include "utils.h"
 #include "includes.h"
+#include "autowall.h"
 
 CBasePlayer* getClosestTarget()
 {
@@ -79,6 +80,7 @@ void modules::aimbot(CUserCmd* cmd) //this misses legits for some reason, even w
 	if (!target->getDormant() && target->getHealth() > 0 && !target->getGunGameImmunity())
 	{
 		Vector angle = RCS(utils::calcAngle(g::pentLocalPlayer->getEyePosition(), target->getBonePosition(8)));
+		//std::cout << modules::calculateAutowall(target, angle, weapon->getWeaponData()) << std::endl;
 		Vector curAngle;
 		interfaces::pacEngineClient->GetViewAngles(curAngle);
 		if (!hitchance())
@@ -89,12 +91,6 @@ void modules::aimbot(CUserCmd* cmd) //this misses legits for some reason, even w
 			cmd->viewangles = angle;
 		else
 			interfaces::pacEngineClient->SetViewAngles(angle); // not using silent turns enemies into bullet dodging masters somehow?????????? ??? like seriously it misses people standing still?????????
-		if (settings::bAutoStop)
-		{
-			cmd->forwardmove = 0;
-			cmd->sidemove = 0;
-			cmd->upmove = 0;
-		}
 		if (settings::bAutoShoot)
 		{
 			static bool shotLast = false;

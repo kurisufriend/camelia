@@ -19,6 +19,7 @@ namespace settings
 	extern bool bRemoveScopeOverlay;
 	extern int iNightmodeLevel;
 	extern bool bGrenadePrediction;
+	extern bool bBarrelESP;
 
 	extern bool bKnifechanger;
 	extern int iKnife;
@@ -41,6 +42,7 @@ namespace settings
 	extern int iMinimumHitchance;
 
 	extern bool bTriggerbot;
+	extern bool bTriggerbotOnKey;
 	extern bool bTriggerbotRecoil;
 
 	extern bool bAutohop;

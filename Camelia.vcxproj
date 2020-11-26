@@ -159,6 +159,7 @@
   <ItemGroup>
     <ClInclude Include="aimbot.h" />
     <ClInclude Include="antiaim.h" />
+    <ClInclude Include="autowall.h" />
     <ClInclude Include="backtrack.h" />
     <ClInclude Include="clientFrameStage.h" />
     <ClInclude Include="CUserCmd.h" />
@@ -166,6 +167,7 @@
     <ClInclude Include="entities.h" />
     <ClCompile Include="aimbot.cpp" />
     <ClCompile Include="antiaim.cpp" />
+    <ClCompile Include="autowall.cpp" />
     <ClCompile Include="backtrack.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="drawing.cpp" />
@@ -202,6 +204,7 @@
     <ClInclude Include="INetchannelInfo.h" />
     <ClInclude Include="IPanel.h" />
     <ClInclude Include="ISurface.h" />
+    <ClInclude Include="IVDebugOverlay.h" />
     <ClInclude Include="IVModelInfo.h" />
     <ClInclude Include="IVModelRender.h" />
     <ClInclude Include="knifechanger.h" />
@@ -217,6 +220,7 @@
     <ClInclude Include="minhook\trampoline.h" />
     <ClInclude Include="miscshit.h" />
     <ClInclude Include="netvar.h" />
+    <ClInclude Include="physicsSurfaceProps.h" />
     <ClInclude Include="settings.h" />
     <ClInclude Include="triggerbot.h" />
     <ClInclude Include="Vector.h" />

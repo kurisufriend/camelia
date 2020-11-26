@@ -8,6 +8,7 @@ LPD3DXFONT g::fontLarge;
 bool g::menuOpen = false;
 Vector2 g::mousePosition;
 Vector g::realAngles;
+std::vector<int> g::speedGraphShitFuck;
 
 IClientEntityList* interfaces::pacClientEntityList = 0;
 ICvar* interfaces::pacCvar = 0;
@@ -23,3 +24,5 @@ IPanel* interfaces::pacPanel = 0;
 ISurface* interfaces::pacSurface = 0;
 IGlobals* interfaces::pacGlobals = 0;
 IFileSystem* interfaces::pacFileSystem = 0;
+IVDebugOverlay* interfaces::pacDebugOverlay = 0;
+PhysicsSurfaceProps* interfaces::pacPhysicsSurfaceProps = 0;

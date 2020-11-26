@@ -12,5 +12,6 @@ namespace modules
 	void slowWalk(CUserCmd* cmd);
 	void clantagChanger(CUserCmd* cmd);
 	void autostrafer(CUserCmd* cmd);
-	void speedGraph();
+	void updateSpeedGraph();
+	void drawSpeedGraph();
 }

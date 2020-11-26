@@ -12,6 +12,7 @@ namespace g // muh gamerfood nostalgia
 	extern bool menuOpen;
 	extern Vector2 mousePosition;
 	extern Vector realAngles;
+	extern std::vector<int> speedGraphShitFuck;
 }
 namespace interfaces
 {
@@ -29,4 +30,6 @@ namespace interfaces
 	extern ISurface* pacSurface;
 	extern IGlobals* pacGlobals;
 	extern IFileSystem* pacFileSystem;
+	extern IVDebugOverlay* pacDebugOverlay;
+	extern PhysicsSurfaceProps* pacPhysicsSurfaceProps;
 }

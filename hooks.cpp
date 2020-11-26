@@ -44,7 +44,7 @@ void __stdcall hkEndScene(LPDIRECT3DDEVICE9 o_pDevice)
 	if (!g::fontLarge)
 		D3DXCreateFont(g::pDevice, 20, 0, FW_BOLD, 0, FALSE, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, ANTIALIASED_QUALITY, DEFAULT_PITCH, "Courier New", &g::fontLarge);
 	modules::ESP();
-	modules::speedGraph();
+	modules::drawSpeedGraph();
 	menu::render();
 	oEndScene(g::pDevice);
 }
@@ -74,17 +74,18 @@ bool __stdcall hkCreateMove(float frametime, CUserCmd* cmd)
 		cmd->buttons |= IN_BULLRUSH;
 
 	modules::autohop(cmd);
-	modules::autostrafer(cmd);
 	modules::triggerbot(cmd);
 	modules::antiAim(cmd);
 	modules::aimbot(cmd);
 	modules::fakeLag(cmd, sendPacket);
-
 	//modules::backtrack(cmd);
 
 	utils::correctMovement(oldViewangles, cmd, oldForwardmove, oldSidemove);
 
+	modules::autostrafer(cmd);
 	modules::slowWalk(cmd);
+
+	modules::updateSpeedGraph();
 
 	cmd->forwardmove = std::clamp(cmd->forwardmove, -450.0f, 450.0f);
 	cmd->sidemove = std::clamp(cmd->sidemove, -450.0f, 450.0f);
@@ -94,7 +95,7 @@ bool __stdcall hkCreateMove(float frametime, CUserCmd* cmd)
 	cmd->viewangles.y = std::clamp(cmd->viewangles.y, -180.0f, 180.0f);
 	cmd->viewangles.z = 0.0f;
 	if (sendPacket)
-		g::realAngles = cmd->viewangles; // at least semi-accurately represent server side stuffs
+		g::realAngles = cmd->viewangles; // at least semi-accurately represent real angles
 	return false;
 }
 
@@ -106,7 +107,7 @@ LRESULT __stdcall hkWndProc(HWND window, UINT msg, WPARAM wparm, LPARAM lparm)
 		g::mousePosition.y = HIWORD(lparm);
 	}
 	//if (g::menuOpen)
-	//	return TRUE;
+	//	return 1;
 	return CallWindowProcA(oWndProc, window, msg, wparm, lparm);
 }
 
@@ -114,7 +115,7 @@ void __stdcall hkFrameStageNotify(clientFrameStage frameStage)
 {
 	if (frameStage == FRAME_RENDER_END)
 	{
-		modules::glowESP(); // glow on renderend should eliminate flicker in theory
+		modules::glowESP();
 	}
 	else if (frameStage == FRAME_NET_UPDATE_POSTDATAUPDATE_START)
 	{

@@ -65,6 +65,9 @@
     <ClCompile Include="backtrack.cpp">
       <Filter>modules\backtrack</Filter>
     </ClCompile>
+    <ClCompile Include="autowall.cpp">
+      <Filter>modules\autowall</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="sdk">
@@ -210,6 +213,15 @@
     </Filter>
     <Filter Include="sdk\interfaces\INetchannelInfo">
       <UniqueIdentifier>{7f698ec2-cd4d-4a94-93e7-bcce4e6714e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="modules\autowall">
+      <UniqueIdentifier>{7f3d38a6-c681-4d62-bbde-a5bfffbf5a06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\interfaces\IVDebugOverlay">
+      <UniqueIdentifier>{f3e9ce2c-0147-4d9a-947c-61b0ace82917}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk\interfaces\physicsSurfaceProps">
+      <UniqueIdentifier>{0a9fe5ea-7610-4117-82b8-46a60ca3a8a8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -366,6 +378,15 @@
     </ClInclude>
     <ClInclude Include="INetchannelInfo.h">
       <Filter>sdk\interfaces\INetchannelInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="autowall.h">
+      <Filter>modules\autowall</Filter>
+    </ClInclude>
+    <ClInclude Include="IVDebugOverlay.h">
+      <Filter>sdk\interfaces\IVDebugOverlay</Filter>
+    </ClInclude>
+    <ClInclude Include="physicsSurfaceProps.h">
+      <Filter>sdk\interfaces\physicsSurfaceProps</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -9,7 +9,7 @@ void modules::triggerbot(CUserCmd* cmd) // use traces later, i'm too brainlet fo
 		return;
 	if (!settings::bTriggerbot)
 		return;
-	if (!GetAsyncKeyState(VK_XBUTTON2))
+	if (settings::bTriggerbotOnKey && !GetAsyncKeyState(VK_XBUTTON2))
 		return;
 	Vector viewAngles = cmd->viewangles;
 	if (settings::bTriggerbotRecoil)

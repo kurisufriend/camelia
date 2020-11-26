@@ -17,5 +17,4 @@ namespace utils
 	float getServerTime();
 	bool canShoot();
 	void setClanTag(const char* tag);
-	void rotateMovement(CUserCmd* pCmd, float rotation);
 }

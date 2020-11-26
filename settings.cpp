@@ -17,6 +17,7 @@ bool settings::bRecoilCrosshair = false;
 bool settings::bRemoveScopeOverlay = false;
 int settings::iNightmodeLevel = 0;
 bool settings::bGrenadePrediction = false;
+bool settings::bBarrelESP = false;
 
 bool settings::bKnifechanger = false;
 int settings::iKnife = false;
@@ -39,6 +40,7 @@ bool settings::bAutoStop;
 int settings::iMinimumHitchance;
 
 bool settings::bTriggerbot;
+bool settings::bTriggerbotOnKey;
 bool settings::bTriggerbotRecoil;
 
 bool settings::bBacktrack;

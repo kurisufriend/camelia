@@ -62,15 +62,42 @@ void modules::drawBoundingBox(int playerIndex, Vector2 &vScreen, Vector2& screen
 	drawing::drawLine(topRight.x, topRight.y, bottomRight.x, bottomRight.y, 1, false, COLOR_BBOX_YELLOW);
 	drawing::drawLine(topLeft.x, topLeft.y, bottomLeft.x, bottomLeft.y, 1, false, COLOR_BBOX_YELLOW);
 }
-//pastad from prev software probably bad fix later // lolol it crashed fixed // basically all diff now
+void modules::drawEyeLines(int playerIndex, float matrix[16])
+{
+	CBasePlayer* player = (CBasePlayer*)interfaces::pacClientEntityList->GetClientEntity(playerIndex);
+	Vector viewAngles = player->getViewAngles();
+
+	Vector vecStart, vecEnd, vecForward;
+	utils::angleVectors(viewAngles, &vecForward);
+
+	vecStart = player->getBonePosition(8);
+	vecForward *= 99999;
+	vecEnd = vecStart + vecForward;
+
+	CGameTrace trace;
+	Ray_t ray;
+	CTraceFilter tracefilter;
+	tracefilter.pSkip = (void*)player;
+
+	ray.Init(vecStart, vecEnd);
+
+	interfaces::pacEngineTrace->TraceRay(ray, MASK_SHOT_HULL | CONTENTS_HITBOX, &tracefilter, &trace);
+	Vector2 lineStart;
+	Vector2 lineEnd;
+	utils::worldToScreen(vecStart, lineStart, matrix, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN));
+	utils::worldToScreen(trace.endpos, lineEnd, matrix, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN));
+	//drawing::drawLine(lineStart.x, lineStart.y, lineEnd.x, lineEnd.y, 1, false, D3DCOLOR_ARGB(255, 255, 255, 255));
+	interfaces::pacDebugOverlay->AddLineOverlay(vecStart, trace.endpos, 255, 255, 255, /*settings::bESPOnVisible*/false, -1);
+}
+//pastad from prev external software probably bad fix later // lolol it crashed fixed // basically all diff now
 void modules::ESP()
 {
 	if (!settings::bESP)
 		return;
 	if (!g::pentLocalPlayer)
 		return;
-	float Matrix[16];
-	memcpy(&Matrix, (PBYTE*)(g::dwClientModule + hazedumper::signatures::dwViewMatrix), sizeof(Matrix));
+	float matrix[16];
+	memcpy(&matrix, (PBYTE*)(g::dwClientModule + hazedumper::signatures::dwViewMatrix), sizeof(matrix));
 	for (int i = 0; i < 64; i++)
 	{
 		CBasePlayer* curPlayer = (CBasePlayer*)interfaces::pacClientEntityList->GetClientEntity(i);
@@ -82,9 +109,9 @@ void modules::ESP()
 		{
 			if (settings::bESPOnVisible && !utils::isVisible(g::pentLocalPlayer, curPlayer))
 				continue;
-			if (!utils::worldToScreen(curPlayer->getOrigin(), screenOrigin, Matrix, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN)))
+			if (!utils::worldToScreen(curPlayer->getOrigin(), screenOrigin, matrix, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN)))
 				continue;
-			if (!utils::worldToScreen(curPlayer->getBonePosition(8), screenHeadPos, Matrix, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN)))
+			if (!utils::worldToScreen(curPlayer->getBonePosition(8), screenHeadPos, matrix, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN)))
 				continue;
 			if (settings::bBoxESP)
 				drawBoundingBox(i, screenOrigin, screenHeadPos);
@@ -92,6 +119,8 @@ void modules::ESP()
 				drawName(i, screenOrigin, screenHeadPos);
 			if (settings::bHealthESP)
 				drawHealth(i, screenOrigin, screenHeadPos);
+			if (settings::bBarrelESP)
+				drawEyeLines(i, matrix);
 		}
 	}
 }

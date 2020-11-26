@@ -202,6 +202,7 @@ void menu::render()
 		{
 			int yPos = windowTop + 25; // big brain genius auto padding i should win an award
 			drawToggle("triggerbot", windowLeft + info::paddingValue, yPos, settings::bTriggerbot, D3DCOLOR_ARGB(255, 25, 25, 25));
+			drawToggle("triggerbot on key", windowLeft + info::paddingValue, yPos, settings::bTriggerbotOnKey, D3DCOLOR_ARGB(255, 25, 25, 25));
 			drawToggle("factor recoil", windowLeft + info::paddingValue, yPos, settings::bTriggerbotRecoil, D3DCOLOR_ARGB(255, 25, 25, 25));
 		}
 	}
@@ -249,6 +250,7 @@ void menu::render()
 			drawToggle("name", windowLeft + info::paddingValue, yPos, settings::bNameESP, D3DCOLOR_ARGB(255, 25, 25, 25));
 			drawToggle("health", windowLeft + info::paddingValue, yPos, settings::bHealthESP, D3DCOLOR_ARGB(255, 25, 25, 25));
 			drawToggle("glow", windowLeft + info::paddingValue, yPos, settings::bGlowESP, D3DCOLOR_ARGB(255, 25, 25, 25));
+			drawToggle("eye lines", windowLeft + info::paddingValue, yPos, settings::bBarrelESP, D3DCOLOR_ARGB(255, 25, 25, 25));
 		}
 		else if (info::currentVisualsTab == 3) // world
 		{

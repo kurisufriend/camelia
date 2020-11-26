@@ -9,6 +9,7 @@
 #include "CGlowObjectManager.h"
 #include "clientFrameStage.h"
 #include "matrix.h"
+#include "physicsSurfaceProps.h"
 
 // interfaces
 #include "IClientEntityList.h"
@@ -27,3 +28,4 @@
 #include "IGlobals.h"
 #include "IFileSystem.h"
 #include "INetchannelInfo.h"
+#include "IVDebugOverlay.h"

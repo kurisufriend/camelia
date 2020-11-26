@@ -93,6 +93,10 @@ bool utils::setupInterfaces() // doing this here but hooks elsewhere triggers my
 	if (interfaces::pacFileSystem = (IFileSystem*)getInterface("filesystem_stdio.dll", "VFileSystem017"); !interfaces::pacFileSystem)
 		return false;
 	std::cout << "got interface IFileSystem" << std::endl;
+
+	if (interfaces::pacDebugOverlay = (IVDebugOverlay*)getInterface("engine.dll", "VDebugOverlay004"); !interfaces::pacDebugOverlay)
+		return false;
+	std::cout << "got interface IVDebugOverlay" << std::endl;
 	
 	if (interfaces::pacClientMode = **(IClientMode***)((*reinterpret_cast<uintptr_t**>(interfaces::pacClient))[10] + 5); !interfaces::pacClientMode)
 		return false;
@@ -357,18 +361,4 @@ void utils::setClanTag(const char* tag)
 	static auto pSetClanTag = (int(__fastcall*)(const char*, const char*))findPattern("engine.dll", "53 56 57 8B DA 8B F9 FF 15");
 
 	pSetClanTag(tag, tag);
-}
-
-void utils::rotateMovement(CUserCmd* pCmd, float rotation)
-{
-	rotation = DEG2RAD(rotation);
-
-	float cos_rot = cos(rotation);
-	float sin_rot = sin(rotation);
-
-	float new_forwardmove = (cos_rot * pCmd->forwardmove) - (sin_rot * pCmd->sidemove);
-	float new_sidemove = (sin_rot * pCmd->forwardmove) + (cos_rot * pCmd->sidemove);
-
-	pCmd->forwardmove = new_forwardmove;
-	pCmd->sidemove = new_sidemove;
 }
