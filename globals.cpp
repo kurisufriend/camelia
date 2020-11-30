@@ -9,6 +9,7 @@ bool g::menuOpen = false;
 Vector2 g::mousePosition;
 Vector g::realAngles;
 std::vector<int> g::speedGraphShitFuck;
+std::deque<backtrackRecord> g::records[64];
 
 IClientEntityList* interfaces::pacClientEntityList = 0;
 ICvar* interfaces::pacCvar = 0;

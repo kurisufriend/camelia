@@ -57,15 +57,20 @@ public:
     {
         return reinterpret_cast<void*>(uintptr_t(this) + 0x4);
     }
-    int draw_model(int flags, uint8_t alpha)
-    {
-        using original_fn = int(__thiscall*)(void*, int, uint8_t);
-        return (*(original_fn**)animating())[9](animating(), flags, alpha);
-    }
     void setModelIndexVFunc(int value)
     {
         using fn = void(__thiscall*)(CBaseEntity*, int);
         return (*(fn**)this)[75](this, value);
+    }
+    Vector& absOrigin()
+    {
+        using fn = Vector&(__thiscall*)(void*);
+        return (*(fn**)this)[10](this);
+    }
+    Vector& absAngles()
+    {
+        using fn = Vector&(__thiscall*)(void*);
+        return (*(fn**)this)[11](this);
     }
     int getFlags()
     {

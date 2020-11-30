@@ -44,6 +44,18 @@ void __stdcall hkEndScene(LPDIRECT3DDEVICE9 o_pDevice)
 	if (!g::fontLarge)
 		D3DXCreateFont(g::pDevice, 20, 0, FW_BOLD, 0, FALSE, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, ANTIALIASED_QUALITY, DEFAULT_PITCH, "Courier New", &g::fontLarge);
 	modules::ESP();
+	/*
+	if (settings::bBacktrackESP && settings::bBacktrack)
+	{
+		for (int i = 0; i < 64; i++)
+		{
+			std::deque<backtrackRecord> curRecords = g::records[i];
+			for (backtrackRecord pee : curRecords)
+			{
+				interfaces::pacDebugOverlay->AddLineOverlay(pee.chestPos, pee.headPos, 255, 255, 255, false, -1);
+			}
+		}
+	}*/
 	modules::drawSpeedGraph();
 	menu::render();
 	oEndScene(g::pDevice);
@@ -78,7 +90,7 @@ bool __stdcall hkCreateMove(float frametime, CUserCmd* cmd)
 	modules::antiAim(cmd);
 	modules::aimbot(cmd);
 	modules::fakeLag(cmd, sendPacket);
-	//modules::backtrack(cmd);
+	modules::backtrack(cmd);
 
 	utils::correctMovement(oldViewangles, cmd, oldForwardmove, oldSidemove);
 

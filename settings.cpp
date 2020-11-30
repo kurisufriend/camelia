@@ -18,6 +18,7 @@ bool settings::bRemoveScopeOverlay = false;
 int settings::iNightmodeLevel = 0;
 bool settings::bGrenadePrediction = false;
 bool settings::bBarrelESP = false;
+bool settings::bBacktrackESP = false;
 
 bool settings::bKnifechanger = false;
 int settings::iKnife = false;
@@ -44,6 +45,7 @@ bool settings::bTriggerbotOnKey;
 bool settings::bTriggerbotRecoil;
 
 bool settings::bBacktrack;
+int settings::iBacktrackTicks = 12;
 
 bool settings::bAutohop;
 bool settings::bAutostrafer;

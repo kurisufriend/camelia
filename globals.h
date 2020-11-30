@@ -13,6 +13,7 @@ namespace g // muh gamerfood nostalgia
 	extern Vector2 mousePosition;
 	extern Vector realAngles;
 	extern std::vector<int> speedGraphShitFuck;
+	extern std::deque<backtrackRecord> records[64];
 }
 namespace interfaces
 {

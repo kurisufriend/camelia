@@ -1,5 +1,7 @@
 #pragma once
 #include "includes.h"
+#include "Vector.h"
+#include "entities.h"
 
 #define CHECK_VALID( _v ) 0
 #define Assert( _exp ) ((void)0)
@@ -162,6 +164,14 @@ public:
 	virtual const char* GetPropName(int iSurfaceDataIndex) const = 0;
 	virtual void			SetWorldMaterialIndexTable(int* iMapArray, int iMapSize) = 0;
 	virtual void			GetPhysicsParameters(int iSurfaceDataIndex, surfacephysicsparams_t* pParamsOut) const = 0;
+};
+
+struct backtrackRecord
+{
+	int tickcount;
+	Vector headPos;
+	Vector chestPos;
+	CBasePlayer* player;
 };
 
 static std::vector<std::string> clantags =

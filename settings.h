@@ -20,6 +20,7 @@ namespace settings
 	extern int iNightmodeLevel;
 	extern bool bGrenadePrediction;
 	extern bool bBarrelESP;
+	extern bool bBacktrackESP;
 
 	extern bool bKnifechanger;
 	extern int iKnife;
@@ -53,6 +54,7 @@ namespace settings
 	extern bool bSpeedGraph;
 
 	extern bool bBacktrack;
+	extern int iBacktrackTicks;
 
 	extern bool bAngleFix;
 	extern bool bThirdPerson;
