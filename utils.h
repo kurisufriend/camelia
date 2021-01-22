@@ -12,6 +12,7 @@ namespace utils
 	bool worldToScreen(Vector pos, Vector2& screen, float matrix[16], int windowWidth, int windowHeight);
 	Vector calcAngle(const Vector& a, const Vector& b);
 	bool isVisible(CBasePlayer* from, CBasePlayer* to);
+	void traceLine(const Vector& vecAbsStart, const Vector& vecAbsEnd, unsigned int mask, CBaseEntity* ignore, trace_t* ptr);
     void angleVectors(const Vector angles, Vector* forward);
 	bool didHitNonWorldEntity(CBaseEntity* ent);
 	float getServerTime();

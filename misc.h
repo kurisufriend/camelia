@@ -14,4 +14,5 @@ namespace modules
 	void autostrafer(CUserCmd* cmd);
 	void updateSpeedGraph();
 	void drawSpeedGraph();
+	void followbot(CUserCmd* cmd);
 }

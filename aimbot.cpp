@@ -5,7 +5,7 @@
 #include "includes.h"
 #include "autowall.h"
 
-CBasePlayer* getClosestTarget()
+CBasePlayer* utils::getClosestTarget()
 {
 	float bestDistance = FLT_MAX; // i dunno how to get max float and too lazy to check //nvm for some reason LLONG exists but float needs to be shoetened???????
 	CBasePlayer* bestPlayer = 0;
@@ -30,12 +30,12 @@ CBasePlayer* getClosestTarget()
 	return bestPlayer;
 }
 
-Vector RCS(const Vector& src) // put somewhere else maybe // also add factor for potential future legitness use + toggle for use
+Vector modules::RCS(const Vector& src) // put somewhere else maybe // also add factor for potential future legitness use + toggle for use
 {
 	return src - g::pentLocalPlayer->getAimPunchAngle() * 2.f;
 }
 
-Vector interp(Vector src, Vector dst, int factor)
+Vector utils::interp(Vector src, Vector dst, int factor)
 {
 	if (!factor)
 		factor = 1;
@@ -72,13 +72,14 @@ void modules::aimbot(CUserCmd* cmd) //this misses legits for some reason, even w
 	CBaseWeapon* weapon = (CBaseWeapon*)interfaces::pacClientEntityList->GetClientEntityFromHandle(g::pentLocalPlayer->getCurrentWeapon());
 	if (weapon && weapon->getItemDefinitionIndex() == WEAPON_KNIFE || weapon->getItemDefinitionIndex() == WEAPON_KNIFE_T || weapon->getItemDefinitionIndex() == WEAPON_TASER) // we should be using a vfunc to check if its a knife or something
 		return;
-	CBasePlayer* target = getClosestTarget();
+	CBasePlayer* target = utils::getClosestTarget();
 	if (!target)
 		return;
 	if (!utils::isVisible(g::pentLocalPlayer, target))
 		return;
 	if (!target->getDormant() && target->getHealth() > 0 && !target->getGunGameImmunity())
 	{
+		int bone = settings::iAimBone ? HEAD_BONE : PELVIS_BONE;
 		Vector angle = RCS(utils::calcAngle(g::pentLocalPlayer->getEyePosition(), target->getBonePosition(8)));
 		//std::cout << modules::calculateAutowall(target, angle, weapon->getWeaponData()) << std::endl;
 		Vector curAngle;
@@ -86,7 +87,7 @@ void modules::aimbot(CUserCmd* cmd) //this misses legits for some reason, even w
 		if (!hitchance())
 			return;
 		if (settings::bAimbotSmoothing)
-			angle = interp(curAngle, angle, settings::iSmoothingAmount);
+			angle = utils::interp(curAngle, angle, settings::iSmoothingAmount);
 		if (settings::bSilentAimbot)
 			cmd->viewangles = angle;
 		else

@@ -97,6 +97,10 @@ bool utils::setupInterfaces() // doing this here but hooks elsewhere triggers my
 	if (interfaces::pacDebugOverlay = (IVDebugOverlay*)getInterface("engine.dll", "VDebugOverlay004"); !interfaces::pacDebugOverlay)
 		return false;
 	std::cout << "got interface IVDebugOverlay" << std::endl;
+
+	if (interfaces::pacPhysicsSurfaceProps = (PhysicsSurfaceProps*)getInterface("vphysics.dll", "VPhysicsSurfaceProps001"); !interfaces::pacPhysicsSurfaceProps)
+		return false;
+	std::cout << "got interface PhysicsSurfaceProps" << std::endl;
 	
 	if (interfaces::pacClientMode = **(IClientMode***)((*reinterpret_cast<uintptr_t**>(interfaces::pacClient))[10] + 5); !interfaces::pacClientMode)
 		return false;
@@ -321,6 +325,16 @@ bool utils::isVisible(CBasePlayer* from, CBasePlayer* to)
 
 	interfaces::pacEngineTrace->TraceRay(ray, MASK_SHOT | CONTENTS_GRATE, &tracefilter, &trace);
 	return (trace.hit_entity == to || trace.fraction == 1.f); // if hit entity or did not hit surface, might fail with world entities?? check later
+}
+
+void utils::traceLine(const Vector& vecAbsStart, const Vector& vecAbsEnd, unsigned int mask, CBaseEntity* ignore, trace_t* ptr)
+{
+	Ray_t ray;
+	ray.Init(vecAbsStart, vecAbsEnd);
+	CTraceFilter filter;
+	filter.pSkip = ignore;
+
+	interfaces::pacEngineTrace->TraceRay(ray, mask, &filter, ptr);
 }
 
 //https://github.com/ValveSoftware/source-sdk-2013/blob/master/sp/src/mathlib/mathlib_base.cpp#L901-L914

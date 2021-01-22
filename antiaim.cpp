@@ -10,7 +10,7 @@ void modules::antiAim(CUserCmd* cmd)
 		return;
 	if (!g::pentLocalPlayer)
 		return;
-	if (g::pentLocalPlayer->getMoveType() == MOVETYPE_LADDER) // i can think of ways to fix movement on a ladder, but for now this works
+	if (g::pentLocalPlayer->getMoveType() == MOVETYPE_LADDER || g::pentLocalPlayer->getMoveType() == MOVETYPE_NOCLIP) // i can think of ways to fix movement on a ladder, but for now this works
 		return;
 	if (cmd->buttons & IN_ATTACK || cmd->buttons & IN_ATTACK2 || cmd->buttons & IN_USE) //p // nades are thrown fully after releasting IN_ATTACK (?) so they end up getting thrown at our feet. assuming once they are no longer held they are properly thrown, don't aa/return if you're holding a nade? theres probably some good fix for this wiht fancy sdk stuff or timers
 		return; // also resets when scoping in lmfao, maybe only return for atk2 when holding a knife?
@@ -23,7 +23,6 @@ void modules::antiAim(CUserCmd* cmd)
 	alt = !alt;
 }
 
-//should be called last
 void modules::fakeLag(CUserCmd* cmd, bool& sendPacket) // just choke on a cycle, later use visble do fancy things like spike on peek or something
 {
 	if (!g::pentLocalPlayer)

@@ -39,6 +39,8 @@ int settings::iSmoothingAmount;
 bool settings::bAutoShoot;
 bool settings::bAutoStop;
 int settings::iMinimumHitchance;
+bool settings::bAutowall;
+int settings::iMinimumDamage;
 
 bool settings::bTriggerbot;
 bool settings::bTriggerbotOnKey;
@@ -53,9 +55,12 @@ bool settings::bSlowWalk;
 int settings::iSlowWalkAmount;
 bool settings::bUnlockStamina;
 bool settings::bSpeedGraph;
+int settings::iAimBone;
 
 bool settings::bAngleFix = false;
 bool settings::bThirdPerson = false;
 
 bool settings::bClantagChanger;
 int settings::iClantag;
+
+bool settings::bFollowbot;

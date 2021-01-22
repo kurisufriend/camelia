@@ -1,6 +1,11 @@
 #pragma once
 #include "sdk.h"
 
+
+// CREDITS qo0 BASE WEW
+
+
+
 // NOTE: If you add a tex type, be sure to modify the s_pImpactEffect
 // array in fx_impact.cpp to get an effect when that surface is shot.
 #define CHAR_TEX_ANTLION		'A'

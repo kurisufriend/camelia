@@ -9,18 +9,13 @@ bool isRecordOutOfBounds(backtrackRecord record)
     float correct = 0;
 
     correct += ((INetChannelInfo*)(interfaces::pacEngineClient->GetNetChannelInfo()))->GetLatency(0);// cool it with the anti semetic remarks
-    correct += ((INetChannelInfo*)(interfaces::pacEngineClient->GetNetChannelInfo()))->GetLatency(1);
+    correct += ((INetChannelInfo*)(interfaces::pacEngineClient->GetNetChannelInfo()))->GetLatency(1);// this is in/out im too lazy to define it somewhere
 
     correct = std::clamp(correct, 0.f, .2f);
 
-    float deltaTime = correct - (interfaces::pacGlobals->currenttime - TICKS_TO_TIME(record.tickcount));
+    float deltaTime = correct - (interfaces::pacGlobals->currenttime - TICKS_TO_TIME(record.tickcount));//changed simtime to ttt ticks shouldnt make a difference
 
-    if (fabsf(deltaTime) > 0.2f)
-    {
-        return true;
-    }
-
-    return false;
+    return (fabsf(deltaTime) > 0.2f);
 }
 
 void modules::backtrack(CUserCmd* cmd)
@@ -39,7 +34,7 @@ void modules::backtrack(CUserCmd* cmd)
         backtrackRecord curRecord;
         curRecord.tickcount = cmd->tickcount;
         curRecord.headPos = curEntity->getBonePosition(8);
-        curRecord.chestPos = curEntity->getBonePosition(6);
+        curRecord.chestPos = curEntity->getBonePosition(0);
         curRecord.player = curEntity;
         g::records[i].push_front(curRecord);
 
@@ -58,6 +53,7 @@ void modules::backtrack(CUserCmd* cmd)
             }
         }
     }
+    //this goes 64*max(12) times instead of 64+max if we do bestplayer->bestrecord
     //find the closest record to the crosshair
     float bestDistance = FLT_MAX;
     backtrackRecord bestRecord;

@@ -354,10 +354,19 @@ inline bool CGameTrace::IsVisible() const
     return fraction > 0.97f;
 }
 
+// fuck off aaaaaaaaaaaaaaa
+class IHandleEntity
+{
+public:
+    virtual							~IHandleEntity() { }
+    virtual void					SetRefEHandle(const unsigned long& hRef) = 0;
+    virtual const unsigned long& GetRefEHandle() const = 0;
+};
+
 class IEngineTrace
 {
 public:
-    virtual void  func0() = 0;
+    virtual int GetPointContents(const Vector& vecAbsPosition, int fContentsMask = MASK_ALL, IHandleEntity** ppEntity = nullptr) = 0;
     virtual void  func1() = 0;
     virtual void  func2() = 0;
     virtual void  func3() = 0;

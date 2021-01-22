@@ -24,6 +24,8 @@ bool menu::isMouseInRect(int x1, int y1, int x2, int y2) // ill just hope i neve
 	return (g::mousePosition.x > x1 && g::mousePosition.y > y1 && g::mousePosition.x < x2 && g::mousePosition.y < y2);
 }
 
+
+
 void menu::drawButton(std::string label, int x1, int& y1, void(*callback)(), D3DCOLOR color)
 {
 	y1 += 25 + info::paddingValue;
@@ -191,6 +193,8 @@ void menu::render()
 		{
 			int yPos = windowTop + 25; // big brain genius auto padding i should win an award
 			drawToggle("aimbot", windowLeft + info::paddingValue, yPos, settings::bAimbot, D3DCOLOR_ARGB(255, 25, 25, 25));
+			//drawToggle("autowall", windowLeft + info::paddingValue, yPos, settings::bAutowall, D3DCOLOR_ARGB(255, 25, 25, 25));
+			//drawSlider("minimum damage", windowLeft + info::paddingValue, yPos, settings::iMinimumDamage, 0, 105, D3DCOLOR_ARGB(255, 25, 25, 25));
 			drawSlider("minimum hit chance", windowLeft + info::paddingValue, yPos, settings::iMinimumHitchance, 0, 101, D3DCOLOR_ARGB(255, 25, 25, 25));
 			//drawSlider("aimbot fov", windowLeft + info::paddingValue, yPos, settings::iAimbotFOV, 0, 180, D3DCOLOR_ARGB(255, 25, 25, 25));
 			drawToggle("silent", windowLeft + info::paddingValue, yPos, settings::bSilentAimbot, D3DCOLOR_ARGB(255, 25, 25, 25));
@@ -198,6 +202,7 @@ void menu::render()
 			drawSlider("smooth amount", windowLeft + info::paddingValue, yPos, settings::iSmoothingAmount, 0, 100, D3DCOLOR_ARGB(255, 25, 25, 25));
 			drawToggle("autoshot", windowLeft + info::paddingValue, yPos, settings::bAutoShoot, D3DCOLOR_ARGB(255, 25, 25, 25));
 			//drawToggle("autostop", windowLeft + info::paddingValue, yPos, settings::bAutoStop, D3DCOLOR_ARGB(255, 25, 25, 25));
+			drawMutex("aim bone", windowLeft + info::paddingValue, yPos, settings::iAimBone, menuBones, D3DCOLOR_ARGB(255, 25, 25, 25));
 		}
 		if (info::currentAimTab == 2)
 		{
@@ -287,9 +292,20 @@ void menu::render()
 	}
 	else if (info::currentTab == 5) // misc
 	{
-		int yPos = windowTop + 25; // big brain genius auto padding i should win an award
-		drawToggle("clantag changer", windowLeft + info::paddingValue, yPos, settings::bClantagChanger, D3DCOLOR_ARGB(255, 25, 25, 25));
-		drawMutex("clantag", windowLeft + info::paddingValue, yPos, settings::iClantag, clantags, D3DCOLOR_ARGB(255, 25, 25, 25));
+		int xPos = windowLeft + 5;
+		drawTab("miscer", xPos, windowBottom - 34, info::currentVisualsTab, 1);
+		drawTab("m3m3b0t", xPos, windowBottom - 34, info::currentVisualsTab, 2);
+		if (info::currentVisualsTab == 1) // miscer
+		{
+			int yPos = windowTop + 25; // big brain genius auto padding i should win an award
+			drawToggle("clantag changer", windowLeft + info::paddingValue, yPos, settings::bClantagChanger, D3DCOLOR_ARGB(255, 25, 25, 25));
+			drawMutex("clantag", windowLeft + info::paddingValue, yPos, settings::iClantag, clantags, D3DCOLOR_ARGB(255, 25, 25, 25));
+		}
+		if (info::currentVisualsTab == 2) // memeb0t
+		{
+			int yPos = windowTop + 25; // big brain genius auto padding i should win an award
+			drawToggle("followbot", windowLeft + info::paddingValue, yPos, settings::bFollowbot, D3DCOLOR_ARGB(255, 25, 25, 25));
+		}
 	}
 	else
 	{

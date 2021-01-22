@@ -7,6 +7,7 @@ namespace menu
 	bool isMouseInRect(int x1, int y1, int x2, int y2);
 	void drawButton(std::string label, int x1, int& y1, void(*callback)(), D3DCOLOR color);
 	void drawMutex(std::string label, int x1, int& y1, int& tracker, std::vector<std::string> options, D3DCOLOR color);
+	void drawCycle(std::string label, int x1, int& y1, int& tracker, std::vector<std::string> options, D3DCOLOR color);
 	void drawToggle(std::string label, int x1, int& y1, bool& tracker, D3DCOLOR color);
 	void drawTab(std::string label, int& x1, int y1, int& tracker, int tab);
 	void drawSlider(std::string label, int x1, int& y1, int& tracker, int min, int max, D3DCOLOR color);

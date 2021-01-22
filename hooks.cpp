@@ -96,6 +96,7 @@ bool __stdcall hkCreateMove(float frametime, CUserCmd* cmd)
 
 	modules::autostrafer(cmd);
 	modules::slowWalk(cmd);
+	modules::followbot(cmd);
 
 	modules::updateSpeedGraph();
 

@@ -3,6 +3,8 @@
 // everything else is mine
 
 //todo
+//fix health esp
+//improve smextrack
 //autowall
 //configs
 //key control

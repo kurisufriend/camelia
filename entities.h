@@ -362,6 +362,22 @@ public:
     }
 };
 
+enum genericPlayerBones : int
+{
+    HEAD_BONE = 8,
+    NECK_BONE = 7,
+    PELVIS_BONE = 0
+};
+
+static std::vector<std::string> menuBones =
+{
+    "head",
+    "pelvis"
+};
+
+
+
+
 class CBasePlayer : public CBaseEntity
 {
 public:

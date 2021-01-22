@@ -41,6 +41,9 @@ namespace settings
 	extern bool bAutoShoot;
 	extern bool bAutoStop;
 	extern int iMinimumHitchance;
+	extern int iAimBone;
+	extern bool bAutowall;
+	extern int iMinimumDamage;
 
 	extern bool bTriggerbot;
 	extern bool bTriggerbotOnKey;
@@ -61,4 +64,6 @@ namespace settings
 
 	extern bool bClantagChanger;
 	extern int iClantag;
+
+	extern bool bFollowbot;
 }

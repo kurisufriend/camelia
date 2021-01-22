@@ -5,6 +5,7 @@
 #include "offsets.h"
 #include "settings.h"
 #include "drawing.h"
+#include "aimbot.h"
 void modules::autohop(CUserCmd* cmd)
 {
 	if (!settings::bAutohop)
@@ -146,4 +147,20 @@ void modules::drawSpeedGraph() //endscene
 		//drawing::drawLine(oldPoint.x, oldPoint.y, curPoint.x, curPoint.y, 1, true, D3DCOLOR_ARGB(255, 255, 255, 255));
 		//oldPoint = curPoint;
 	}
+}
+void modules::followbot(CUserCmd* cmd)
+{
+	if (!settings::bFollowbot)
+		return;
+	CBaseEntity* daRealPlayaNoCap = utils::getClosestTarget();
+	if (!daRealPlayaNoCap) // make sure hes da real one no cap
+		return;
+	bool checkLole = utils::isVisible(g::pentLocalPlayer, (CBasePlayer*)daRealPlayaNoCap); // can we see dat nigga
+	Vector angle = RCS(utils::calcAngle(g::pentLocalPlayer->getEyePosition(), daRealPlayaNoCap->getOrigin()));
+	Vector curAngle;
+	interfaces::pacEngineClient->GetViewAngles(curAngle);
+	angle = utils::interp(curAngle, angle, 4);
+	Vector legoNicecopter = Vector(curAngle.x, angle.y, curAngle.z);
+	interfaces::pacEngineClient->SetViewAngles(legoNicecopter);
+	cmd->forwardmove = 450;
 }
